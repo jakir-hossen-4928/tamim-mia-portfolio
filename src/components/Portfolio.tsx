@@ -11,7 +11,7 @@ const headshot = "https://i.ibb.co.com/yFgqtp4q/tamim-headshot-photo.jpg";
 const contentCertificate = "https://i.ibb.co.com/5xFRPM2j/Linked-In-Learning-Certificate-Content-Marketing-Customer-Engagement.png";
 const brandingCertificate = "https://i.ibb.co.com/Nn7xsTKh/Linked-In-Learning-Certificate-personal-Branding.png";
 
-const contactEndpoint = "https://formspree.io/f/mzdyjwkn";
+const contactEndpoint = `https://formspree.io/f/${import.meta.env.VITE_FORMSPREE_KEY}`;
 
 const navItems = [
   { href: "/", label: "Home" },
@@ -92,8 +92,8 @@ const Navigation = () => {
             </NavLink>
           ))}
         </div>
-        <Link 
-          to="/contact" 
+        <Link
+          to="/contact"
           className={cn(buttonVariants({ variant: "organic", size: "sm" }), "hidden md:inline-flex")}
         >
           Hire me
@@ -106,18 +106,18 @@ const Navigation = () => {
         <div className="mx-auto mt-3 max-w-6xl rounded-[2rem] border border-border/60 bg-surface/95 p-4 shadow-float backdrop-blur-md md:hidden animate-in fade-in slide-in-from-top-4 duration-300">
           <div className="flex flex-col gap-1">
             {navItems.map((item) => (
-              <NavLink 
-                key={item.href} 
-                to={item.href} 
-                onClick={() => setOpen(false)} 
+              <NavLink
+                key={item.href}
+                to={item.href}
+                onClick={() => setOpen(false)}
                 className={({ isActive }) => `block rounded-2xl px-5 py-3.5 font-bold transition-all duration-300 ${isActive ? "bg-primary text-primary-foreground shadow-soft" : "text-accent-foreground hover:bg-accent/50"}`}
               >
                 {item.label}
               </NavLink>
             ))}
           </div>
-          <Link 
-            to="/contact" 
+          <Link
+            to="/contact"
             className={cn(buttonVariants({ variant: "organic", size: "lg" }), "mt-4 flex w-full items-center justify-center gap-2 py-4 text-base")}
             onClick={() => setOpen(false)}
           >
@@ -172,27 +172,31 @@ const About = () => (
   <section id="about" className="px-4 py-24 sm:px-6 lg:px-8">
     <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
       <div className="space-y-6 text-muted-foreground">
-        <SectionHeading eyebrow="About Me" title="Driven by efficiency, growth, and excellence" />
-        
+        <SectionHeading eyebrow="About Me" title="Turning Business Challenges into Measurable Results" />
+
         <div className="space-y-6 text-lg leading-relaxed">
           <p className="text-xl font-bold text-foreground">
-            I am a dedicated Business Management student at Ravensbourne University London, committed to mastering the intersection of operational efficiency and strategic growth.
-          </p>
-          
-          <p>
-            My academic journey is centered on developing a robust understanding of modern business dynamics, including strategic management, financial modeling, and entrepreneurship. I believe that success in today's fast-paced economy requires a blend of analytical rigor and creative problem-solving.
+            Business Management student at Ravensbourne University London with a strong focus on operational efficiency, revenue optimization, and customer experience excellence.
           </p>
 
           <p>
-            In the professional sphere, my experience at Pret A Manger in London has been transformative. Managing high-volume customer operations and 400-500+ daily transactions has instilled in me a deep sense of sales discipline, operational accuracy, and resilience under pressure. I pride myself on my ability to build customer rapport while maintaining strict efficiency standards.
+            I specialize in applying data-driven decision-making and structured problem-solving to improve business performance. My academic training includes strategic management, financial analysis, and entrepreneurship, allowing me to approach challenges with both analytical precision and commercial awareness.
           </p>
 
           <p>
-            Beyond academics and work, I am deeply involved in community leadership. As the Publicity and Publication Secretary of the Bangladeshi Community, I manage communications and digital outreach, honing my ability to connect diverse audiences and lead collaborative initiatives.
+            At Pret A Manger, I operate in a high-volume retail environment handling 400–500+ daily transactions. This experience has strengthened my ability to maintain speed, accuracy, and service quality under pressure while directly contributing to sales performance and customer retention. I consistently focus on upselling, reducing service friction, and improving overall operational flow.
+          </p>
+
+          <p>
+            In addition, my role as Publicity and Publication Secretary for the Bangladeshi Community has developed my skills in digital communication, audience engagement, and campaign execution. I manage content distribution and outreach strategies aimed at increasing visibility and participation.
+          </p>
+
+          <p>
+            I am particularly interested in roles related to business operations, consulting, and growth strategy, where I can contribute to improving efficiency, scaling systems, and driving measurable business outcomes.
           </p>
 
           <p className="font-bold text-primary italic">
-            "My ultimate goal is to leverage these experiences to become a business consultant, helping organizations navigate complexity and achieve sustainable excellence."
+            "I aim to deliver measurable impact by optimizing processes, enhancing customer experience, and supporting data-informed business decisions."
           </p>
         </div>
       </div>
@@ -206,7 +210,7 @@ const About = () => (
             </div>
           ))}
         </div>
-        
+
         <div className="rounded-[3rem] border border-primary/20 bg-primary/5 p-8 shadow-soft backdrop-blur-sm">
           <h4 className="font-display text-xl font-bold text-foreground mb-4">Core Values</h4>
           <ul className="space-y-3">
@@ -232,21 +236,21 @@ const Education = () => (
   <section id="education" className="bg-secondary px-4 py-24 text-secondary-foreground sm:px-6 lg:px-8">
     <div className="mx-auto max-w-7xl">
       <SectionHeading eyebrow="Education" title="Building a foundation for leadership" />
-      
+
       <div className="mt-16 grid grid-cols-1 md:grid-cols-12 gap-6">
         {/* University Main Card */}
         <div className="md:col-span-8 rounded-[3rem] border border-secondary-foreground/20 bg-secondary-foreground/5 p-8 md:p-12 shadow-soft backdrop-blur-sm relative overflow-hidden group">
           <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-110 transition-transform duration-700">
             <GraduationCap size={120} />
           </div>
-          
+
           <div className="relative z-10">
             <div className="inline-flex items-center gap-2 rounded-full bg-primary/20 px-4 py-1 text-xs font-bold uppercase tracking-wider text-primary-foreground mb-6">
               Primary Academic Path
             </div>
-            <h3 className="font-display text-3xl md:text-5xl font-bold mb-4">BA (Hons) Business Management</h3>
-            <p className="text-xl font-medium text-secondary-foreground/80 mb-8">Ravensbourne University London · 2024 - 2028 (Expected)</p>
-            
+            <h3 className="font-display text-3xl md:text-5xl font-bold mb-4">BSc (Hons) Business Management</h3>
+            <p className="text-xl font-medium text-secondary-foreground/80 mb-8">Ravensbourne University London · 2025 - 2028 (Expected)</p>
+
             <p className="text-lg leading-relaxed text-secondary-foreground/70 max-w-2xl">
               Focusing on modern business strategy, financial modeling, and entrepreneurship. Actively engaged in professional workshops and industry networking events to bridge the gap between theory and practice.
             </p>
@@ -269,7 +273,7 @@ const Education = () => (
             <span className="text-xs font-bold uppercase tracking-widest opacity-60">Professional Certifications</span>
             <div className="h-px flex-1 bg-secondary-foreground/20" />
           </div>
-          
+
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {[
               { src: contentCertificate, title: "Content Marketing" },
@@ -286,16 +290,80 @@ const Education = () => (
           </div>
         </div>
 
+        {/* Academic Achievement (HSC) */}
+        <div className="md:col-span-6 rounded-[3rem] border border-secondary-foreground/20 bg-secondary-foreground/5 p-8 shadow-soft backdrop-blur-sm relative overflow-hidden group">
+          <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-110 transition-transform duration-700">
+            <GraduationCap size={100} />
+          </div>
+          <div className="relative z-10">
+            <div className="inline-flex items-center gap-2 rounded-full bg-primary/20 px-4 py-1 text-xs font-bold uppercase tracking-wider text-primary-foreground mb-4">
+              Higher Secondary
+            </div>
+            <h3 className="font-display text-2xl font-bold mb-2">HSC (A Level Equivalent)</h3>
+            <p className="text-lg font-medium text-secondary-foreground/80 mb-1">Jaj Bhuiyan College</p>
+            <p className="text-sm font-bold text-secondary-foreground/60 mb-6">Subject: Commerce · 2019 - 2021</p>
+            <div className="inline-flex items-center gap-2 rounded-2xl bg-primary/20 px-4 py-2 border border-primary/20">
+              <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
+              <p className="text-lg font-black text-primary-foreground">Grade: GPA 5.00 / 5.00</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Academic Achievement (SSC) */}
+        <div className="md:col-span-6 rounded-[3rem] border border-secondary-foreground/20 bg-secondary-foreground/5 p-8 shadow-soft backdrop-blur-sm relative overflow-hidden group">
+          <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-110 transition-transform duration-700">
+            <CheckCircle2 size={100} />
+          </div>
+          <div className="relative z-10">
+            <div className="inline-flex items-center gap-2 rounded-full bg-primary/20 px-4 py-1 text-xs font-bold uppercase tracking-wider text-primary-foreground mb-4">
+              Secondary Education
+            </div>
+            <h3 className="font-display text-2xl font-bold mb-2">SSC</h3>
+            <p className="text-lg font-medium text-secondary-foreground/80 mb-1">Madhabdi S.P. Institution</p>
+            <p className="text-sm font-bold text-secondary-foreground/60 mb-6">Class of 2019</p>
+            <div className="inline-flex items-center gap-2 rounded-2xl bg-primary/20 px-4 py-2 border border-primary/20">
+              <span className="h-2 w-2 rounded-full bg-primary" />
+              <p className="text-lg font-black text-primary-foreground">Grade: GPA 5.00 / 5.00</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Achievements & Scholarships */}
+        <div className="md:col-span-12 rounded-[3rem] border border-primary/20 bg-primary/10 p-8 md:p-12 shadow-soft backdrop-blur-sm relative overflow-hidden">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 relative z-10">
+            <div>
+              <div className="inline-flex items-center gap-2 rounded-full bg-primary/30 px-4 py-1 text-xs font-bold uppercase tracking-wider text-primary-foreground mb-6">
+                Special Recognition
+              </div>
+              <h3 className="font-display text-3xl md:text-4xl font-bold mb-4">Academic Excellence & Scholarships</h3>
+              <p className="text-lg font-medium text-secondary-foreground/80">Reflecting a consistent track record of high achievement and commitment to learning.</p>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {[
+                { title: "Scholarship Award", detail: "£11,000 from Ravensbourne University London" },
+                { title: "Perfect GPA", detail: "GPA 5.00/5.00 in both SSC & HSC" },
+                { title: "Academic Excellence", detail: "Consistently ranked among top performers" },
+                { title: "International Recognition", detail: "Recognized for strong academic potential" }
+              ].map((ach, i) => (
+                <div key={i} className="rounded-2xl bg-secondary-foreground/10 p-5 border border-secondary-foreground/10 group hover:bg-primary/20 transition-colors">
+                  <p className="text-xs font-bold uppercase tracking-widest text-primary mb-1">{ach.title}</p>
+                  <p className="text-sm font-bold text-secondary-foreground leading-tight">{ach.detail}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
         {/* Key Modules Grid */}
-        <div className="md:col-span-7 rounded-[3rem] border border-secondary-foreground/20 bg-secondary-foreground/5 p-8 shadow-soft">
+        <div className="md:col-span-12 rounded-[3rem] border border-secondary-foreground/20 bg-secondary-foreground/5 p-8 shadow-soft">
           <div className="flex items-center gap-4 mb-8">
             <div className="grid h-10 w-10 place-items-center rounded-xl bg-primary/20 text-primary-foreground">
               <Terminal size={20} />
             </div>
             <h3 className="font-display text-2xl font-bold">Key Focus Areas</h3>
           </div>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
             {[
               "Strategic Management",
               "Entrepreneurial Finance",
@@ -319,7 +387,7 @@ const Education = () => (
 const Skills = () => (
   <section id="skills" className="px-4 py-24 sm:px-6 lg:px-8 bg-surface/30">
     <SectionHeading eyebrow="Skills & Expertise" title="Comprehensive capabilities for modern operations" />
-    
+
     <div className="mx-auto max-w-7xl space-y-20">
       {/* Professional Skills Grid */}
       <div className="space-y-8">
@@ -391,37 +459,121 @@ const Skills = () => (
 const Experience = () => (
   <section id="experience" className="bg-primary px-4 py-24 text-primary-foreground sm:px-6 lg:px-8">
     <div className="mx-auto max-w-6xl">
-      <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-        <div>
-          <p className="mb-3 font-body text-sm font-extrabold uppercase tracking-[0.18em] text-primary-foreground/75">Experience</p>
-          <h2 className="font-display text-4xl font-bold leading-tight md:text-5xl">Fast-paced service turned into sales discipline</h2>
-          <p className="mt-6 text-lg leading-8 text-primary-foreground/80">At Pret A Manger in London, I developed sales discipline, operational accuracy, customer rapport, and resilience under pressure from January 2025 to present.</p>
-        </div>
-        <article className="rounded-[4rem_2rem_3rem_2rem] border border-primary-foreground/20 bg-primary-foreground/10 p-8 shadow-float backdrop-blur">
-          <div className="mb-6 flex flex-wrap items-center gap-3">
-            <span className="grid h-14 w-14 place-items-center rounded-2xl bg-primary-foreground text-primary"><BriefcaseBusiness size={28} aria-hidden="true" /></span>
+      <SectionHeading eyebrow="Experience & Leadership" title="Driving growth through operational excellence" />
+
+      <div className="grid gap-20">
+        {/* Professional Progression Card */}
+        <article className="rounded-[4rem_2rem_3rem_2rem] border border-primary-foreground/20 bg-primary-foreground/10 p-8 md:p-12 shadow-float backdrop-blur">
+          <div className="mb-10 flex flex-wrap items-center gap-6">
+            <span className="grid h-16 w-16 place-items-center rounded-2xl bg-primary-foreground text-primary shadow-soft"><BriefcaseBusiness size={32} aria-hidden="true" /></span>
             <div>
-              <h3 className="font-display text-3xl font-bold">Pret A Manger</h3>
-              <p className="font-bold text-primary-foreground/75">Team Member (Customer Operations) · London · Jan 2025 - Present</p>
+              <h3 className="font-display text-4xl font-bold">Pret A Manger</h3>
+              <p className="text-xl font-bold text-primary-foreground/75">London · April 2025 - Present</p>
             </div>
           </div>
-          <ul className="grid gap-4 sm:grid-cols-2">
+
+          <div className="space-y-10 relative before:absolute before:left-6 before:top-2 before:bottom-2 before:w-px before:bg-primary-foreground/20">
             {[
-              "Managed 400-500+ daily transactions in a high-volume environment",
-              "Delivered excellent customer service and improved satisfaction",
-              "Operated efficiently during peak hours, reducing waiting time",
-              "Processed payments with high accuracy using POS systems",
-              "Maintained food safety and hygiene standards",
-              "Trained and supported new team members",
-              "Applied upselling techniques to support revenue growth",
-              "Resolved customer issues professionally"
-            ].map((item) => (
-              <li key={item} className="flex gap-3 rounded-[1.5rem] bg-primary-foreground/10 p-4 text-sm font-bold leading-6">
-                <CheckCircle2 className="mt-0.5 shrink-0" size={18} aria-hidden="true" /> {item}
-              </li>
+              {
+                role: "Barista Leader",
+                date: "April 2026 - Present",
+                active: true,
+                desc: [
+                  "Leading daily team operations in a fast-paced environment",
+                  "Training and supporting new team members",
+                  "Maintaining high standards of customer service",
+                  "Managing workflow during peak hours"
+                ]
+              },
+              {
+                role: "Barista",
+                date: "July 2025 - April 2026",
+                desc: [
+                  "Optimized high-volume food and beverage preparation",
+                  "Mastered fast-paced service workflows",
+                  "Consistently met quality and speed benchmarks"
+                ]
+              },
+              {
+                role: "Team Member",
+                date: "April 2025 - June 2025",
+                desc: [
+                  "Handled high transaction volumes with accuracy",
+                  "Developed foundational customer service skills",
+                  "Maintained operational excellence standards"
+                ]
+              }
+            ].map((pos, idx) => (
+              <div key={idx} className="relative pl-14">
+                <div className={`absolute left-5 top-1.5 h-3 w-3 rounded-full border-2 border-primary-foreground ${pos.active ? 'bg-primary-foreground scale-125' : 'bg-transparent'}`} />
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-4">
+                  <h4 className="text-2xl font-bold">{pos.role}</h4>
+                  <span className="text-sm font-bold uppercase tracking-widest opacity-60">{pos.date}</span>
+                </div>
+                <ul className="grid gap-3 sm:grid-cols-2">
+                  {pos.desc.map((item, i) => (
+                    <li key={i} className="flex gap-3 rounded-2xl bg-primary-foreground/10 p-4 text-sm font-medium leading-relaxed group hover:bg-primary-foreground/20 transition-colors">
+                      <CheckCircle2 className="mt-0.5 shrink-0 text-primary-foreground/60" size={16} aria-hidden="true" /> {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             ))}
-          </ul>
+          </div>
         </article>
+
+        {/* Leadership Card */}
+        <article className="rounded-[3rem_4rem_2rem_3rem] border border-primary-foreground/20 bg-primary-foreground/5 p-8 md:p-12 shadow-float backdrop-blur relative overflow-hidden group">
+          <Sparkles className="absolute -top-10 -right-10 text-primary-foreground/10 group-hover:scale-150 transition-transform duration-1000" size={240} />
+          <div className="relative z-10">
+            <div className="mb-8 flex items-center gap-4">
+              <div className="grid h-12 w-12 place-items-center rounded-xl bg-primary-foreground/20">
+                <Sprout size={24} />
+              </div>
+              <h3 className="font-display text-3xl font-bold">Leadership Roles</h3>
+            </div>
+
+            <div className="space-y-8">
+              <div>
+                <h4 className="text-2xl font-bold mb-2">Publicity & Publication Secretary</h4>
+                <p className="font-bold text-primary-foreground/70 mb-6">Bangladeshi Community · Ravensbourne University London</p>
+                <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                  {[
+                    "Managing communications and promotional activities for community events",
+                    "Creating and publishing content across digital platforms",
+                    "Coordinating with team members to increase student engagement"
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-start gap-3 p-4 rounded-2xl bg-primary-foreground/5 hover:bg-primary-foreground/10 transition-colors border border-primary-foreground/10">
+                      <div className="h-1.5 w-1.5 rounded-full bg-primary-foreground/60 mt-2 shrink-0" />
+                      <p className="text-sm font-medium leading-relaxed">{item}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        {/* Volunteering Sub-section */}
+        <div className="pt-10 border-t border-primary-foreground/10">
+          <SectionHeading eyebrow="Giving Back" title="Community & Impact" />
+          <div className="grid gap-6 sm:grid-cols-2">
+            {[
+              { name: "Bangladesh Red Crescent Society", role: "Member" },
+              { name: "Bondhon Blood Donation Organization", role: "Member" }
+            ].map((vol, i) => (
+              <div key={i} className="flex items-center gap-6 p-8 rounded-[2.5rem] border border-primary-foreground/20 bg-primary-foreground/10 shadow-soft group hover:bg-primary-foreground/20 transition-all">
+                <div className="h-14 w-14 grid place-items-center rounded-2xl bg-primary-foreground/20 text-primary-foreground transition-colors shadow-soft">
+                  <CheckCircle2 />
+                </div>
+                <div>
+                  <h4 className="text-xl font-bold">{vol.name}</h4>
+                  <p className="text-sm font-bold opacity-60 uppercase tracking-widest mt-1">{vol.role}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -479,6 +631,7 @@ const Portfolio = ({ children }: { children: ReactNode }) => {
       "@context": "https://schema.org",
       "@type": "Person",
       name: "Tamim Mia",
+      url: "https://tamimmia.netlify.app/",
       jobTitle: "Business Management Undergraduate",
       email: "mailto:Imtiaztamim521@gmail.com",
       telephone: "+44 7424 630174",
