@@ -1,5 +1,5 @@
-import Portfolio from "@/components/Portfolio";
+import Portfolio, { HomePage } from "@/components/Portfolio";
 
-const Index = () => <Portfolio />;
+const Index = () => <Portfolio><HomePage /></Portfolio>;
 
 export default Index;

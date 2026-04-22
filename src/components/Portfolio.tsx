@@ -1,5 +1,6 @@
 import { ArrowUpRight, BriefcaseBusiness, CheckCircle2, GraduationCap, HeartHandshake, Leaf, Linkedin, Mail, MapPin, Menu, Phone, Send, Sparkles, Sprout, X } from "lucide-react";
 import { type ReactNode, useEffect, useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
 import headshot from "@/assets/portfolio/tamim-headshot-photo.jpg";
@@ -32,13 +33,13 @@ import publicationTwo from "@/assets/portfolio/Publication-Secretary2.jpg";
 const contactEndpoint = "https://formspree.io/f/mzdyjwkn";
 
 const navItems = [
-  { href: "#home", label: "Home" },
-  { href: "#about", label: "About" },
-  { href: "#education", label: "Education" },
-  { href: "#skills", label: "Skills" },
-  { href: "#experience", label: "Experience" },
-  { href: "#reflection", label: "Reflection" },
-  { href: "#contact", label: "Contact" },
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About" },
+  { href: "/education", label: "Education" },
+  { href: "/skills", label: "Skills" },
+  { href: "/experience", label: "Experience" },
+  { href: "/reflection", label: "Reflection" },
+  { href: "/contact", label: "Contact" },
 ];
 
 const skills = [
@@ -121,21 +122,21 @@ const Navigation = () => {
   return (
     <header className="fixed inset-x-0 top-4 z-50 px-4">
       <nav className="mx-auto flex max-w-6xl items-center justify-between rounded-full border border-border/60 bg-surface/75 px-4 py-3 shadow-soft backdrop-blur-md">
-        <a href="#home" className="flex items-center gap-3 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
+        <Link to="/" className="flex items-center gap-3 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
           <span className="grid h-10 w-10 place-items-center rounded-full bg-primary text-primary-foreground shadow-soft">
             <Leaf size={20} aria-hidden="true" />
           </span>
           <span className="font-display text-xl font-bold text-foreground">Tamim Mia</span>
-        </a>
+        </Link>
         <div className="hidden items-center gap-1 md:flex">
           {navItems.map((item) => (
-            <a key={item.href} href={item.href} className="rounded-full px-4 py-2 text-sm font-bold text-accent-foreground transition-all duration-300 hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
+            <NavLink key={item.href} to={item.href} className={({ isActive }) => `rounded-full px-4 py-2 text-sm font-bold transition-all duration-300 hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${isActive ? "bg-accent text-primary" : "text-accent-foreground"}`}>
               {item.label}
-            </a>
+            </NavLink>
           ))}
         </div>
         <Button asChild variant="organic" size="sm" className="hidden md:inline-flex">
-          <a href="#contact">Hire me</a>
+          <Link to="/contact">Hire me</Link>
         </Button>
         <button className="grid h-11 w-11 place-items-center rounded-full bg-accent text-accent-foreground md:hidden" onClick={() => setOpen((value) => !value)} aria-label="Toggle menu" aria-expanded={open}>
           {open ? <X size={20} /> : <Menu size={20} />}
@@ -144,9 +145,9 @@ const Navigation = () => {
       {open ? (
         <div className="mx-auto mt-3 max-w-6xl rounded-[2rem] border border-border/60 bg-surface/95 p-3 shadow-float backdrop-blur-md md:hidden">
           {navItems.map((item) => (
-            <a key={item.href} href={item.href} onClick={() => setOpen(false)} className="block rounded-full px-5 py-3 font-bold text-accent-foreground transition-colors hover:bg-accent">
+            <NavLink key={item.href} to={item.href} onClick={() => setOpen(false)} className={({ isActive }) => `block rounded-full px-5 py-3 font-bold transition-colors hover:bg-accent ${isActive ? "bg-accent text-primary" : "text-accent-foreground"}`}>
               {item.label}
-            </a>
+            </NavLink>
           ))}
         </div>
       ) : null}
@@ -169,7 +170,7 @@ const Hero = () => (
         </p>
         <div className="mt-8 flex flex-col gap-4 sm:flex-row">
           <Button asChild variant="organic" size="xl">
-            <a href="#contact">Start a conversation <Send size={18} aria-hidden="true" /></a>
+            <Link to="/contact">Start a conversation <Send size={18} aria-hidden="true" /></Link>
           </Button>
           <Button asChild variant="organicOutline" size="xl">
             <a href="/Tamim-Mia-Cover-Letter.pdf" target="_blank" rel="noreferrer">View cover letter <ArrowUpRight size={18} aria-hidden="true" /></a>
@@ -294,19 +295,19 @@ const Reflection = () => (
     <SectionHeading eyebrow="Reflection" title="A bento gallery of learning, community, and leadership">
       Moments from class activities, events, presentations, community work, and my role as publicity and publication secretary.
     </SectionHeading>
-    <div className="mx-auto grid max-w-7xl auto-rows-[minmax(18rem,auto)] gap-6 md:grid-cols-6">
+    <div className="mx-auto grid max-w-7xl gap-5 sm:grid-cols-2 lg:auto-rows-[24rem] lg:grid-cols-6 lg:gap-6">
       {reflections.map((group, index) => (
-        <article key={group.title} className={`group relative overflow-hidden ${organicRadii[index % organicRadii.length]} border border-border/60 bg-surface shadow-soft transition-all duration-500 hover:-translate-y-1 hover:shadow-float ${index === 0 || index === 1 ? "md:col-span-3 md:row-span-2" : index === 2 ? "md:col-span-4" : "md:col-span-2"}`}>
-          <div className="grid h-full grid-cols-2 gap-1 p-2">
+        <article key={group.title} className={`group relative min-h-[22rem] overflow-hidden ${organicRadii[index % organicRadii.length]} border border-border/60 bg-surface shadow-soft transition-all duration-500 hover:-translate-y-1 hover:shadow-float ${index === 0 || index === 1 ? "lg:col-span-3 lg:row-span-2 lg:min-h-[32rem]" : index === 2 ? "lg:col-span-4" : "lg:col-span-2"}`}>
+          <div className="grid h-full min-h-[22rem] grid-cols-2 gap-1.5 p-2 lg:min-h-full">
             {group.images.slice(0, 4).map((image, imageIndex) => (
-              <img key={image} src={image} alt={`${group.title} reflection image ${imageIndex + 1}`} className={`h-full min-h-36 w-full object-cover transition-transform duration-700 group-hover:scale-105 ${imageIndex === 0 && group.images.length < 3 ? "col-span-2" : ""} rounded-[1.4rem]`} loading="lazy" />
+              <img key={image} src={image} alt={`${group.title} reflection image ${imageIndex + 1}`} className={`h-full min-h-36 w-full rounded-[1.35rem] object-cover transition-transform duration-700 group-hover:scale-105 ${imageIndex === 0 && group.images.length < 3 ? "col-span-2" : ""}`} loading="lazy" />
             ))}
           </div>
-          <div className="absolute inset-x-3 bottom-3 rounded-[1.5rem] border border-surface/50 bg-surface/88 p-4 shadow-soft backdrop-blur-md">
-            <div className="flex items-start justify-between gap-4">
+          <div className="absolute inset-x-3 bottom-3 rounded-[1.5rem_2rem_1.5rem_1.8rem] border border-border/50 bg-surface/92 p-4 shadow-soft backdrop-blur-md sm:inset-x-4 sm:bottom-4">
+            <div className="flex items-start justify-between gap-3">
               <div>
-                <h3 className="font-display text-2xl font-bold text-foreground">{group.title}</h3>
-                <p className="mt-1 text-sm font-bold leading-6 text-muted-foreground">{group.note}</p>
+                <h3 className="font-display text-xl font-black leading-tight text-foreground sm:text-2xl">{group.title}</h3>
+                <p className="mt-1 line-clamp-2 text-sm font-bold leading-6 text-muted-foreground">{group.note}</p>
               </div>
               <Sparkles className="shrink-0 text-secondary" size={22} aria-hidden="true" />
             </div>
@@ -342,7 +343,25 @@ const Contact = () => (
   </section>
 );
 
-const Portfolio = () => {
+const pageSections = {
+  home: <Hero />,
+  about: <About />,
+  education: <Education />,
+  skills: <Skills />,
+  experience: <Experience />,
+  reflection: <Reflection />,
+  contact: <Contact />,
+};
+
+export const HomePage = () => pageSections.home;
+export const AboutPage = () => pageSections.about;
+export const EducationPage = () => pageSections.education;
+export const SkillsPage = () => pageSections.skills;
+export const ExperiencePage = () => pageSections.experience;
+export const ReflectionPage = () => pageSections.reflection;
+export const ContactPage = () => pageSections.contact;
+
+const Portfolio = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     const structuredData = {
       "@context": "https://schema.org",
@@ -365,13 +384,7 @@ const Portfolio = () => {
   return (
     <main className="min-h-screen overflow-hidden bg-background font-body text-foreground">
       <Navigation />
-      <Hero />
-      <About />
-      <Education />
-      <Skills />
-      <Experience />
-      <Reflection />
-      <Contact />
+      {children}
       <footer className="px-4 py-10 text-center text-sm font-bold text-muted-foreground">
         <p>© {new Date().getFullYear()} Tamim Mia · Business Management Portfolio</p>
       </footer>
