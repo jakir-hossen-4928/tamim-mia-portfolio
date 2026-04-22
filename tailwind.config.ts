@@ -13,6 +13,10 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        display: ["Fraunces", "Georgia", "serif"],
+        body: ["Nunito", "ui-sans-serif", "system-ui", "sans-serif"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -47,6 +51,7 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        surface: "hsl(var(--surface))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
@@ -62,6 +67,14 @@ export default {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+        "organic-1": "4rem 2rem 3rem 2rem",
+        "organic-2": "2rem 5rem 2rem 3rem",
+        "organic-3": "3rem 2rem 5rem 2rem",
+        "organic-4": "2rem 3rem 2rem 4rem",
+      },
+      boxShadow: {
+        soft: "var(--shadow-soft)",
+        float: "var(--shadow-float)",
       },
       keyframes: {
         "accordion-down": {
@@ -80,10 +93,15 @@ export default {
             height: "0",
           },
         },
+        drift: {
+          "0%, 100%": { transform: "translate3d(0, 0, 0) scale(1)" },
+          "50%": { transform: "translate3d(1rem, -0.75rem, 0) scale(1.04)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        drift: "drift 12s ease-in-out infinite",
       },
     },
   },
