@@ -1,4 +1,4 @@
-import { ArrowUpRight, BriefcaseBusiness, CheckCircle2, GraduationCap, HeartHandshake, Leaf, Linkedin, Mail, MapPin, Menu, Phone, Send, Sparkles, Sprout, X } from "lucide-react";
+import { ArrowUpRight, BriefcaseBusiness, CheckCircle2, Download, GraduationCap, HeartHandshake, Leaf, Linkedin, Mail, MapPin, Menu, Phone, Send, Sparkles, Sprout, X } from "lucide-react";
 import { type ReactNode, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -43,64 +43,65 @@ const navItems = [
 ];
 
 const skills = [
-  "Customer engagement",
-  "Consultative selling",
-  "POS accuracy",
-  "Upselling strategy",
-  "Team support",
-  "Market analysis",
-  "Business strategy",
-  "Publicity & publication",
-  "Problem solving",
-  "High-volume operations",
+  "Customer Service",
+  "Team Collaboration",
+  "Problem Solving",
+  "Time Management",
+  "Operations Support",
+  "Sales & Upselling",
+  "Data Handling",
+  "POS Systems",
   "Communication",
-  "Customer success mindset",
+  "Attention to Detail",
+  "Adaptability",
+  "Training & Onboarding",
 ];
 
 const stats = [
-  { value: "400+", label: "daily customer transactions" },
+  { value: "400–500+", label: "daily customer transactions" },
   { value: "2028", label: "expected graduation" },
   { value: "2", label: "LinkedIn Learning certificates" },
-  { value: "7", label: "reflection galleries" },
+  { value: "Level 5", label: "Business Management student" },
 ];
 
 const organicRadii = ["rounded-organic-1", "rounded-organic-2", "rounded-organic-3", "rounded-organic-4"];
 
-const reflections = [
+const reflectionStories = [
   {
-    title: "Class activities",
-    note: "Collaborative learning, peer feedback, and business practice in action.",
-    images: [classOne, classTwo, classThree, classFour, classFive],
+    number: "01",
+    title: "Teamwork & Collaboration",
+    note: "While working on group presentations, I led research and segmentation efforts. I contribute to team projects with preparation, clear communication, and constructive feedback.",
+    images: [classOne, classTwo, classThree],
   },
   {
-    title: "Insight Hour Event",
-    note: "Industry conversations that shaped my understanding of professional growth.",
+    number: "02",
+    title: "University Insight",
+    note: "Engaging with creative professionals at Ravensbourne helped me understand how creativity, innovation, and business strategy work together.",
     images: [insightOne, insightTwo, insightThree, insightFour, insightFive, insightSix],
   },
   {
-    title: "RaveLate Event",
-    note: "Event energy, coordination, and community moments captured through participation.",
+    number: "03",
+    title: "Career Insight",
+    note: "Career fairs and insight hours gave me direct exposure to recruitment trends, employer expectations, and the qualities companies value most.",
+    images: [contentCertificate, brandingCertificate, presentationOne],
+  },
+  {
+    number: "04",
+    title: "“Prem O Porob”",
+    note: "Proud to be part of celebrating Valentine’s Day and Pohela Falgun at Ravensbourne, bringing the community together through culture, music, and performance.",
     images: [raveOne, raveTwo, raveThree, raveFour],
   },
   {
-    title: "Community",
-    note: "Building belonging through shared cultural and student experiences.",
-    images: [communityOne, communityTwo],
+    number: "05",
+    title: "Community Leadership",
+    note: "Community building has strengthened my discipline, creative collaboration, audience awareness, and ability to connect with diverse groups.",
+    images: [communityOne, communityTwo, leadershipOne, leadershipTwo, publicationOne, publicationTwo],
   },
   {
-    title: "Leadership",
-    note: "Developing confidence through responsibility, service, and visible contribution.",
-    images: [leadershipOne, leadershipTwo],
-  },
-  {
-    title: "Publicity & Publication Secretary",
-    note: "Serving the Bangladeshi Community through communication and representation.",
-    images: [publicationOne, publicationTwo],
-  },
-  {
-    title: "Presentation",
-    note: "Sharing ideas clearly, confidently, and with audience awareness.",
-    images: [presentationOne, presentationTwo],
+    number: "06",
+    title: "Looking Ahead",
+    note: "My goal is to become a business consultant, gain real-world experience, and eventually start my own business while continuing to build skills in sales, strategy, and leadership.",
+    images: [presentationTwo],
   },
 ];
 
