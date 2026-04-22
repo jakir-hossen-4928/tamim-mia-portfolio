@@ -290,31 +290,49 @@ const Experience = () => (
   </section>
 );
 
+const GalleryImage = ({ src, alt, className = "", imgClassName = "object-cover" }: { src: string; alt: string; className?: string; imgClassName?: string }) => (
+  <figure className={`group/image overflow-hidden rounded-[2rem] border border-border/60 bg-surface p-2 shadow-soft ${className}`}>
+    <img src={src} alt={alt} className={`h-full min-h-48 w-full rounded-[1.35rem] transition-transform duration-700 group-hover/image:scale-105 ${imgClassName}`} loading="lazy" />
+  </figure>
+);
+
 const Reflection = () => (
   <section id="reflection" className="relative overflow-hidden px-4 py-24 sm:px-6 lg:px-8">
     <OrganicBlob variant="one" className="right-[-10rem] top-20 h-[30rem] w-[30rem] bg-accent/70" />
-    <SectionHeading eyebrow="Reflection" title="A bento gallery of learning, community, and leadership">
-      Moments from class activities, events, presentations, community work, and my role as publicity and publication secretary.
-    </SectionHeading>
-    <div className="mx-auto grid max-w-7xl gap-5 sm:grid-cols-2 lg:auto-rows-[24rem] lg:grid-cols-6 lg:gap-6">
-      {reflections.map((group, index) => (
-        <article key={group.title} className={`group relative min-h-[22rem] overflow-hidden ${organicRadii[index % organicRadii.length]} border border-border/60 bg-surface shadow-soft transition-all duration-500 hover:-translate-y-1 hover:shadow-float ${index === 0 || index === 1 ? "lg:col-span-3 lg:row-span-2 lg:min-h-[32rem]" : index === 2 ? "lg:col-span-4" : "lg:col-span-2"}`}>
-          <div className="grid h-full min-h-[22rem] grid-cols-2 gap-1.5 p-2 lg:min-h-full">
-            {group.images.slice(0, 4).map((image, imageIndex) => (
-              <img key={image} src={image} alt={`${group.title} reflection image ${imageIndex + 1}`} className={`h-full min-h-36 w-full rounded-[1.35rem] object-cover transition-transform duration-700 group-hover:scale-105 ${imageIndex === 0 && group.images.length < 3 ? "col-span-2" : ""}`} loading="lazy" />
-            ))}
-          </div>
-          <div className="absolute inset-x-3 bottom-3 rounded-[1.5rem_2rem_1.5rem_1.8rem] border border-border/50 bg-surface/92 p-4 shadow-soft backdrop-blur-md sm:inset-x-4 sm:bottom-4">
-            <div className="flex items-start justify-between gap-3">
-              <div>
-                <h3 className="font-display text-xl font-black leading-tight text-foreground sm:text-2xl">{group.title}</h3>
-                <p className="mt-1 line-clamp-2 text-sm font-bold leading-6 text-muted-foreground">{group.note}</p>
+    <div className="mx-auto max-w-7xl">
+      <div className="mx-auto mb-12 max-w-4xl text-center">
+        <p className="mb-3 font-body text-sm font-extrabold uppercase tracking-[0.18em] text-secondary">Reflection</p>
+        <h2 className="font-display text-4xl font-bold leading-tight text-foreground md:text-5xl">Employability & Experience Gallery</h2>
+        <p className="mt-5 text-lg leading-8 text-muted-foreground">A visual reflection of my journey at Ravensbourne University London.</p>
+      </div>
+      <div className="mb-14 grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+        <div className="rounded-[4rem_2rem_3rem_2rem] border border-border/60 bg-accent/45 p-6 shadow-soft md:p-8">
+          <p className="text-xl font-extrabold leading-8 text-foreground">I’m passionate about learning, growing, and helping businesses thrive through strategic thinking and collaboration.</p>
+          <p className="mt-5 leading-8 text-muted-foreground">This site showcases my employability skills and experiences as I prepare for a successful career in business and entrepreneurship. From university workshops to community events, every moment has shaped my professional identity.</p>
+        </div>
+        <GalleryImage src={headshot} alt="Tamim Mia professional portrait" className="rotate-[-1deg]" imgClassName="aspect-[16/11] object-cover" />
+      </div>
+      <div className="grid gap-8">
+        {reflectionStories.map((story, index) => (
+          <article key={story.title} className={`grid gap-5 rounded-[3rem_2rem_4rem_2rem] border border-border/60 bg-surface/80 p-4 shadow-soft md:p-6 lg:grid-cols-2 lg:items-stretch ${index % 2 ? "lg:[&>div:first-child]:order-2" : ""}`}>
+            <div className="flex min-h-72 flex-col justify-between rounded-[2.25rem] bg-muted/55 p-6 md:p-8">
+              <div className="flex items-start justify-between gap-4">
+                <span className="font-display text-5xl font-black text-secondary/70">{story.number}</span>
+                <Sparkles className="shrink-0 text-primary" size={26} aria-hidden="true" />
               </div>
-              <Sparkles className="shrink-0 text-secondary" size={22} aria-hidden="true" />
+              <div>
+                <h3 className="mt-8 font-display text-3xl font-black leading-tight text-foreground md:text-4xl">{story.title}</h3>
+                <p className="mt-4 text-base font-bold leading-8 text-muted-foreground md:text-lg">{story.note}</p>
+              </div>
             </div>
-          </div>
-        </article>
-      ))}
+            <div className="grid auto-rows-[12rem] grid-cols-2 gap-3 sm:auto-rows-[14rem] md:grid-cols-3 lg:auto-rows-[11rem]">
+              {story.images.map((image, imageIndex) => (
+                <GalleryImage key={image} src={image} alt={`${story.title} image ${imageIndex + 1}`} className={`${imageIndex === 0 ? "col-span-2 row-span-2 md:col-span-2" : ""} ${story.images.length === 1 ? "col-span-2 row-span-2 md:col-span-3" : ""}`} />
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
     </div>
   </section>
 );
