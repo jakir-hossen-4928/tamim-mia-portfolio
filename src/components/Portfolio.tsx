@@ -170,7 +170,7 @@ const Hero = () => (
         </p>
         <div className="mt-8 flex flex-col gap-4 sm:flex-row">
           <Button asChild variant="organic" size="xl">
-            <a href="#contact">Start a conversation <Send size={18} aria-hidden="true" /></a>
+            <Link to="/contact">Start a conversation <Send size={18} aria-hidden="true" /></Link>
           </Button>
           <Button asChild variant="organicOutline" size="xl">
             <a href="/Tamim-Mia-Cover-Letter.pdf" target="_blank" rel="noreferrer">View cover letter <ArrowUpRight size={18} aria-hidden="true" /></a>
