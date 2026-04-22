@@ -4,6 +4,8 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Portfolio, { AboutPage, ContactPage, EducationPage, ExperiencePage, HomePage, ReflectionPage, SkillsPage } from "@/components/Portfolio";
+import ScrollToTop from "@/components/ScrollToTop";
+import ScrollUpButton from "@/components/ScrollUpButton";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -14,6 +16,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Portfolio><HomePage /></Portfolio>} />
           <Route path="/about" element={<Portfolio><AboutPage /></Portfolio>} />
@@ -25,6 +28,7 @@ const App = () => (
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <ScrollUpButton />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

@@ -1,34 +1,15 @@
-import { ArrowUpRight, BriefcaseBusiness, CheckCircle2, Download, GraduationCap, HeartHandshake, Leaf, Linkedin, Mail, MapPin, Menu, Phone, Send, Sparkles, Sprout, X } from "lucide-react";
+import { ArrowUpRight, BriefcaseBusiness, CheckCircle2, Download, GraduationCap, Laptop, Languages, Leaf, Linkedin, Mail, MapPin, Menu, Phone, Send, Sparkles, Sprout, Terminal, X } from "lucide-react";
 import { type ReactNode, useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
-import { Button } from "@/components/ui/button";
+import { Link, NavLink, useLocation } from "react-router-dom";
+import { Button, buttonVariants } from "@/components/ui/button";
+import { Progress } from "@/components/ui/progress";
+import { cn } from "@/lib/utils";
 
-import headshot from "@/assets/portfolio/tamim-headshot-photo.jpg";
-import contentCertificate from "@/assets/portfolio/Content-Marketing-Certificate.png";
-import brandingCertificate from "@/assets/portfolio/Personal-Branding-Certificate.png";
-import classOne from "@/assets/portfolio/Class-activities1.jpg";
-import classTwo from "@/assets/portfolio/Class-activities2.jpg";
-import classThree from "@/assets/portfolio/Class-activities3.jpg";
-import classFour from "@/assets/portfolio/Class-activities4.jpg";
-import classFive from "@/assets/portfolio/Class-activities5.jpg";
-import insightOne from "@/assets/portfolio/Insight-Hour-Event1.jpg";
-import insightTwo from "@/assets/portfolio/Insight-Hour-Event2.jpg";
-import insightThree from "@/assets/portfolio/Insight-Hour-Event3.jpg";
-import insightFour from "@/assets/portfolio/Insight-Hour-Event4.jpg";
-import insightFive from "@/assets/portfolio/Insight-Hour-Event5.jpg";
-import insightSix from "@/assets/portfolio/Insight-Hour-Event6.jpg";
-import raveOne from "@/assets/portfolio/Rave-Late-Event1.jpg";
-import raveTwo from "@/assets/portfolio/Rave-Late-Event2.jpg";
-import raveThree from "@/assets/portfolio/Rave-Late-Event3.jpg";
-import raveFour from "@/assets/portfolio/Rave-Late-Event4.jpg";
-import communityOne from "@/assets/portfolio/Community1.jpg";
-import communityTwo from "@/assets/portfolio/Community2.jpg";
-import leadershipOne from "@/assets/portfolio/leadership1.jpg";
-import leadershipTwo from "@/assets/portfolio/leadership2.jpg";
-import presentationOne from "@/assets/portfolio/Presentation1.jpg";
-import presentationTwo from "@/assets/portfolio/Presentation2.jpg";
-import publicationOne from "@/assets/portfolio/Publication-Secretary1.jpg";
-import publicationTwo from "@/assets/portfolio/Publication-Secretary2.jpg";
+import Reflection from "./Reflection";
+
+const headshot = "https://i.ibb.co.com/yFgqtp4q/tamim-headshot-photo.jpg";
+const contentCertificate = "https://i.ibb.co.com/5xFRPM2j/Linked-In-Learning-Certificate-Content-Marketing-Customer-Engagement.png";
+const brandingCertificate = "https://i.ibb.co.com/Nn7xsTKh/Linked-In-Learning-Certificate-personal-Branding.png";
 
 const contactEndpoint = "https://formspree.io/f/mzdyjwkn";
 
@@ -39,10 +20,9 @@ const navItems = [
   { href: "/skills", label: "Skills" },
   { href: "/experience", label: "Experience" },
   { href: "/reflection", label: "Reflection" },
-  { href: "/contact", label: "Contact" },
 ];
 
-const skills = [
+const professionalSkills = [
   "Customer Service",
   "Team Collaboration",
   "Problem Solving",
@@ -57,6 +37,21 @@ const skills = [
   "Training & Onboarding",
 ];
 
+const itTools = [
+  { name: "Microsoft Office (Word, Excel, PowerPoint)", level: 90 },
+  { name: "Google Workspace (Docs, Sheets)", level: 88 },
+  { name: "Microsoft Teams & Outlook", level: 85 },
+  { name: "Amazon Seller Central", level: 78 },
+  { name: "Mac & PC Proficiency", level: 92 },
+];
+
+const languageSkills = [
+  { name: "English (Fluent)", level: 95 },
+  { name: "Bangla (Fluent)", level: 100 },
+  { name: "Hindi (Advanced)", level: 80 },
+  { name: "Urdu (Advanced)", level: 78 },
+];
+
 const stats = [
   { value: "400–500+", label: "daily customer transactions" },
   { value: "2028", label: "expected graduation" },
@@ -65,45 +60,6 @@ const stats = [
 ];
 
 const organicRadii = ["rounded-organic-1", "rounded-organic-2", "rounded-organic-3", "rounded-organic-4"];
-
-const reflectionStories = [
-  {
-    number: "01",
-    title: "Teamwork & Collaboration",
-    note: "While working on group presentations, I led research and segmentation efforts. I contribute to team projects with preparation, clear communication, and constructive feedback.",
-    images: [classOne, classTwo, classThree],
-  },
-  {
-    number: "02",
-    title: "University Insight",
-    note: "Engaging with creative professionals at Ravensbourne helped me understand how creativity, innovation, and business strategy work together.",
-    images: [insightOne, insightTwo, insightThree, insightFour, insightFive, insightSix],
-  },
-  {
-    number: "03",
-    title: "Career Insight",
-    note: "Career fairs and insight hours gave me direct exposure to recruitment trends, employer expectations, and the qualities companies value most.",
-    images: [contentCertificate, brandingCertificate, presentationOne],
-  },
-  {
-    number: "04",
-    title: "“Prem O Porob”",
-    note: "Proud to be part of celebrating Valentine’s Day and Pohela Falgun at Ravensbourne, bringing the community together through culture, music, and performance.",
-    images: [raveOne, raveTwo, raveThree, raveFour],
-  },
-  {
-    number: "05",
-    title: "Community Leadership",
-    note: "Community building has strengthened my discipline, creative collaboration, audience awareness, and ability to connect with diverse groups.",
-    images: [communityOne, communityTwo, leadershipOne, leadershipTwo, publicationOne, publicationTwo],
-  },
-  {
-    number: "06",
-    title: "Looking Ahead",
-    note: "My goal is to become a business consultant, gain real-world experience, and eventually start my own business while continuing to build skills in sales, strategy, and leadership.",
-    images: [presentationTwo],
-  },
-];
 
 const OrganicBlob = ({ className, variant = "one" }: { className: string; variant?: "one" | "two" | "three" }) => (
   <div aria-hidden="true" className={`organic-blob organic-blob-${variant} ${className}`} />
@@ -136,20 +92,37 @@ const Navigation = () => {
             </NavLink>
           ))}
         </div>
-        <Button asChild variant="organic" size="sm" className="hidden md:inline-flex">
-          <Link to="/contact">Hire me</Link>
-        </Button>
+        <Link 
+          to="/contact" 
+          className={cn(buttonVariants({ variant: "organic", size: "sm" }), "hidden md:inline-flex")}
+        >
+          Hire me
+        </Link>
         <button className="grid h-11 w-11 place-items-center rounded-full bg-accent text-accent-foreground md:hidden" onClick={() => setOpen((value) => !value)} aria-label="Toggle menu" aria-expanded={open}>
           {open ? <X size={20} /> : <Menu size={20} />}
         </button>
       </nav>
       {open ? (
-        <div className="mx-auto mt-3 max-w-6xl rounded-[2rem] border border-border/60 bg-surface/95 p-3 shadow-float backdrop-blur-md md:hidden">
-          {navItems.map((item) => (
-            <NavLink key={item.href} to={item.href} onClick={() => setOpen(false)} className={({ isActive }) => `block rounded-full px-5 py-3 font-bold transition-colors hover:bg-accent ${isActive ? "bg-accent text-primary" : "text-accent-foreground"}`}>
-              {item.label}
-            </NavLink>
-          ))}
+        <div className="mx-auto mt-3 max-w-6xl rounded-[2rem] border border-border/60 bg-surface/95 p-4 shadow-float backdrop-blur-md md:hidden animate-in fade-in slide-in-from-top-4 duration-300">
+          <div className="flex flex-col gap-1">
+            {navItems.map((item) => (
+              <NavLink 
+                key={item.href} 
+                to={item.href} 
+                onClick={() => setOpen(false)} 
+                className={({ isActive }) => `block rounded-2xl px-5 py-3.5 font-bold transition-all duration-300 ${isActive ? "bg-primary text-primary-foreground shadow-soft" : "text-accent-foreground hover:bg-accent/50"}`}
+              >
+                {item.label}
+              </NavLink>
+            ))}
+          </div>
+          <Link 
+            to="/contact" 
+            className={cn(buttonVariants({ variant: "organic", size: "lg" }), "mt-4 flex w-full items-center justify-center gap-2 py-4 text-base")}
+            onClick={() => setOpen(false)}
+          >
+            Hire me <Send size={18} />
+          </Link>
         </div>
       ) : null}
     </header>
@@ -197,65 +170,220 @@ const Hero = () => (
 
 const About = () => (
   <section id="about" className="px-4 py-24 sm:px-6 lg:px-8">
-    <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.85fr_1.15fr]">
-      <div className="rounded-[4rem_2rem_3rem_2rem] border border-border/60 bg-accent/45 p-8 shadow-soft">
-        <HeartHandshake className="mb-6 text-primary" size={42} aria-hidden="true" />
-        <h2 className="font-display text-4xl font-bold text-foreground">About Tamim</h2>
-        <p className="mt-5 text-lg leading-8 text-muted-foreground">
-          Business Management undergraduate at Ravensbourne University London with hands-on experience in fast-paced customer operations. Skilled in managing high-volume transactions, delivering excellent customer service, and supporting operational efficiency.
-        </p>
+    <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+      <div className="space-y-6 text-muted-foreground">
+        <SectionHeading eyebrow="About Me" title="Driven by efficiency, growth, and excellence" />
+        
+        <div className="space-y-6 text-lg leading-relaxed">
+          <p className="text-xl font-bold text-foreground">
+            I am a dedicated Business Management student at Ravensbourne University London, committed to mastering the intersection of operational efficiency and strategic growth.
+          </p>
+          
+          <p>
+            My academic journey is centered on developing a robust understanding of modern business dynamics, including strategic management, financial modeling, and entrepreneurship. I believe that success in today's fast-paced economy requires a blend of analytical rigor and creative problem-solving.
+          </p>
+
+          <p>
+            In the professional sphere, my experience at Pret A Manger in London has been transformative. Managing high-volume customer operations and 400-500+ daily transactions has instilled in me a deep sense of sales discipline, operational accuracy, and resilience under pressure. I pride myself on my ability to build customer rapport while maintaining strict efficiency standards.
+          </p>
+
+          <p>
+            Beyond academics and work, I am deeply involved in community leadership. As the Publicity and Publication Secretary of the Bangladeshi Community, I manage communications and digital outreach, honing my ability to connect diverse audiences and lead collaborative initiatives.
+          </p>
+
+          <p className="font-bold text-primary italic">
+            "My ultimate goal is to leverage these experiences to become a business consultant, helping organizations navigate complexity and achieve sustainable excellence."
+          </p>
+        </div>
       </div>
-      <div className="grid gap-5 sm:grid-cols-2">
-        {stats.map((stat, index) => (
-          <div key={stat.label} className={`group ${organicRadii[index % organicRadii.length]} border border-border/60 bg-surface p-7 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-float`}>
-            <p className="font-display text-5xl font-black text-primary transition-transform duration-300 group-hover:scale-110">{stat.value}</p>
-            <p className="mt-2 font-bold leading-7 text-accent-foreground">{stat.label}</p>
-          </div>
-        ))}
+
+      <div className="space-y-8">
+        <div className="grid gap-4 sm:grid-cols-2">
+          {stats.map((stat) => (
+            <div key={stat.label} className="rounded-[2.5rem_1.5rem_2rem_1.5rem] border border-border/60 bg-accent/35 p-8 text-center shadow-soft transition-transform duration-300 hover:scale-[1.03]">
+              <p className="font-display text-4xl font-black text-primary">{stat.value}</p>
+              <p className="mt-2 text-xs font-extrabold uppercase tracking-widest text-secondary">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+        
+        <div className="rounded-[3rem] border border-primary/20 bg-primary/5 p-8 shadow-soft backdrop-blur-sm">
+          <h4 className="font-display text-xl font-bold text-foreground mb-4">Core Values</h4>
+          <ul className="space-y-3">
+            {[
+              "Strategic Thinking & Long-term Vision",
+              "Operational Excellence & Efficiency",
+              "Customer-Centric Growth Mindset",
+              "Collaborative & Inclusive Leadership"
+            ].map((value) => (
+              <li key={value} className="flex items-center gap-3 text-sm font-bold text-accent-foreground">
+                <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                {value}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   </section>
 );
 
 const Education = () => (
-  <section id="education" className="relative overflow-hidden bg-muted/35 px-4 py-24 sm:px-6 lg:px-8">
-    <OrganicBlob variant="three" className="bottom-[-8rem] left-1/2 h-96 w-96 bg-secondary/20" />
-    <SectionHeading eyebrow="Education" title="Learning business through strategy, marketing, and practice">
-      Academic work at Ravensbourne University London supports my interest in business strategy, marketing, consumer behaviour, SaaS sales, and data-informed growth.
-    </SectionHeading>
-    <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-3">
-      <article className="rounded-[2rem_5rem_2rem_3rem] border border-border/60 bg-surface p-8 shadow-soft lg:col-span-2">
-        <GraduationCap className="mb-6 text-primary" size={44} aria-hidden="true" />
-        <h3 className="font-display text-3xl font-bold text-foreground">Ravensbourne University London</h3>
-        <p className="mt-3 text-lg font-extrabold text-primary">Business Management undergraduate — Level 5 student</p>
-        <p className="mt-5 leading-8 text-muted-foreground">BSc (Hons) Business Management in London. Level 5 student, expected to finish by January 2028. Current focus areas include marketing, consumer behaviour, business strategy, market analysis, and data-driven projects.</p>
-      </article>
-      <div className="grid gap-8">
-        {[contentCertificate, brandingCertificate].map((certificate, index) => (
-          <figure key={certificate} className="group rounded-[2rem] border border-border/60 bg-surface p-3 shadow-soft transition-all duration-500 hover:-translate-y-1 hover:rotate-1 hover:shadow-float">
-            <img src={certificate} alt={index === 0 ? "LinkedIn Learning certificate for Content Marketing Customer Engagement" : "LinkedIn Learning certificate for Personal Branding"} className="aspect-[16/10] w-full rounded-[1.4rem] object-cover" loading="lazy" />
-            <figcaption className="px-3 pb-2 pt-4 text-sm font-extrabold text-accent-foreground">LinkedIn Learning Certificate</figcaption>
-          </figure>
-        ))}
+  <section id="education" className="bg-secondary px-4 py-24 text-secondary-foreground sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-7xl">
+      <SectionHeading eyebrow="Education" title="Building a foundation for leadership" />
+      
+      <div className="mt-16 grid grid-cols-1 md:grid-cols-12 gap-6">
+        {/* University Main Card */}
+        <div className="md:col-span-8 rounded-[3rem] border border-secondary-foreground/20 bg-secondary-foreground/5 p-8 md:p-12 shadow-soft backdrop-blur-sm relative overflow-hidden group">
+          <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-110 transition-transform duration-700">
+            <GraduationCap size={120} />
+          </div>
+          
+          <div className="relative z-10">
+            <div className="inline-flex items-center gap-2 rounded-full bg-primary/20 px-4 py-1 text-xs font-bold uppercase tracking-wider text-primary-foreground mb-6">
+              Primary Academic Path
+            </div>
+            <h3 className="font-display text-3xl md:text-5xl font-bold mb-4">BA (Hons) Business Management</h3>
+            <p className="text-xl font-medium text-secondary-foreground/80 mb-8">Ravensbourne University London · 2024 - 2028 (Expected)</p>
+            
+            <p className="text-lg leading-relaxed text-secondary-foreground/70 max-w-2xl">
+              Focusing on modern business strategy, financial modeling, and entrepreneurship. Actively engaged in professional workshops and industry networking events to bridge the gap between theory and practice.
+            </p>
+          </div>
+        </div>
+
+        {/* Academic Journey Summary */}
+        <div className="md:col-span-4 rounded-[3rem] border border-secondary-foreground/20 bg-primary/20 p-8 flex flex-col justify-center shadow-soft">
+          <Sparkles className="text-primary-foreground/40 mb-6" size={32} />
+          <h4 className="font-display text-2xl font-bold mb-4">Academic Journey</h4>
+          <p className="text-secondary-foreground/80 leading-relaxed font-medium">
+            My path is tailored towards understanding complex market dynamics and developing leadership capabilities for the 2030s business world.
+          </p>
+        </div>
+
+        {/* LinkedIn Certificates */}
+        <div className="md:col-span-5 space-y-6">
+          <div className="flex items-center gap-3 mb-2">
+            <div className="h-px flex-1 bg-secondary-foreground/20" />
+            <span className="text-xs font-bold uppercase tracking-widest opacity-60">Professional Certifications</span>
+            <div className="h-px flex-1 bg-secondary-foreground/20" />
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {[
+              { src: contentCertificate, title: "Content Marketing" },
+              { src: brandingCertificate, title: "Personal Branding" }
+            ].map((cert, i) => (
+              <a key={i} href={cert.src} target="_blank" rel="noreferrer" className="group relative overflow-hidden rounded-[2rem] border border-secondary-foreground/20 bg-surface/10 p-2 shadow-soft transition-all hover:-translate-y-1 hover:bg-surface/20">
+                <img src={cert.src} alt={cert.title} className="aspect-[4/3] w-full rounded-[1.5rem] object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                  <p className="text-[10px] font-bold text-white uppercase tracking-wider mb-1">LinkedIn Learning</p>
+                  <p className="text-sm font-bold text-white leading-tight">{cert.title}</p>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        {/* Key Modules Grid */}
+        <div className="md:col-span-7 rounded-[3rem] border border-secondary-foreground/20 bg-secondary-foreground/5 p-8 shadow-soft">
+          <div className="flex items-center gap-4 mb-8">
+            <div className="grid h-10 w-10 place-items-center rounded-xl bg-primary/20 text-primary-foreground">
+              <Terminal size={20} />
+            </div>
+            <h3 className="font-display text-2xl font-bold">Key Focus Areas</h3>
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            {[
+              "Strategic Management",
+              "Entrepreneurial Finance",
+              "Business Operations",
+              "Digital Marketing",
+              "International Business",
+              "Project Management"
+            ].map((module) => (
+              <div key={module} className="flex items-center gap-3 rounded-2xl bg-secondary-foreground/10 p-4 transition-all hover:bg-secondary-foreground/20 group">
+                <div className="h-2 w-2 rounded-full bg-primary transition-all group-hover:scale-125" />
+                <span className="text-sm font-bold opacity-90">{module}</span>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   </section>
 );
 
 const Skills = () => (
-  <section id="skills" className="px-4 py-24 sm:px-6 lg:px-8">
-    <SectionHeading eyebrow="Skills" title="Rounded strengths for sales, service, and operations">
-      A practical skillset shaped by high-volume work, business learning, and leadership responsibilities.
-    </SectionHeading>
-    <div className="mx-auto grid max-w-7xl gap-4 sm:grid-cols-2 lg:grid-cols-4">
-      {skills.map((skill, index) => (
-        <div key={skill} className={`group flex min-h-28 items-center gap-4 ${organicRadii[index % organicRadii.length]} border border-border/60 bg-surface p-5 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-float`}>
-          <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-primary/10 text-primary transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground">
-            <CheckCircle2 size={24} aria-hidden="true" />
-          </span>
-          <p className="font-extrabold text-accent-foreground">{skill}</p>
+  <section id="skills" className="px-4 py-24 sm:px-6 lg:px-8 bg-surface/30">
+    <SectionHeading eyebrow="Skills & Expertise" title="Comprehensive capabilities for modern operations" />
+    
+    <div className="mx-auto max-w-7xl space-y-20">
+      {/* Professional Skills Grid */}
+      <div className="space-y-8">
+        <div className="flex items-center gap-4">
+          <div className="grid h-10 w-10 place-items-center rounded-xl bg-primary/10 text-primary">
+            <BriefcaseBusiness size={20} />
+          </div>
+          <h3 className="font-display text-2xl font-bold text-foreground">Professional Skills</h3>
         </div>
-      ))}
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+          {professionalSkills.map((skill, index) => (
+            <div key={skill} className={`group flex items-center gap-3 ${organicRadii[index % organicRadii.length]} border border-border/60 bg-surface p-4 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-float hover:border-primary/30`}>
+              <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-primary/10 text-primary transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground">
+                <CheckCircle2 size={16} aria-hidden="true" />
+              </span>
+              <p className="text-sm font-bold text-accent-foreground">{skill}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="grid gap-12 lg:grid-cols-2">
+        {/* IT & Tools Section */}
+        <div className="space-y-8">
+          <div className="flex items-center gap-4">
+            <div className="grid h-10 w-10 place-items-center rounded-xl bg-secondary/10 text-secondary">
+              <Laptop size={20} />
+            </div>
+            <h3 className="font-display text-2xl font-bold text-foreground">IT & Tools</h3>
+          </div>
+          <div className="space-y-6 rounded-[2.5rem] border border-border/60 bg-surface/50 p-8 shadow-soft backdrop-blur-sm">
+            {itTools.map((tool) => (
+              <div key={tool.name} className="space-y-2">
+                <div className="flex justify-between text-sm font-bold">
+                  <span className="text-accent-foreground">{tool.name}</span>
+                  <span className="text-secondary">{tool.level}%</span>
+                </div>
+                <Progress value={tool.level} className="h-2 bg-secondary/10" />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Languages Section */}
+        <div className="space-y-8">
+          <div className="flex items-center gap-4">
+            <div className="grid h-10 w-10 place-items-center rounded-xl bg-accent/10 text-accent">
+              <Languages size={20} />
+            </div>
+            <h3 className="font-display text-2xl font-bold text-foreground">Languages</h3>
+          </div>
+          <div className="space-y-6 rounded-[2.5rem] border border-border/60 bg-surface/50 p-8 shadow-soft backdrop-blur-sm">
+            {languageSkills.map((lang) => (
+              <div key={lang.name} className="space-y-2">
+                <div className="flex justify-between text-sm font-bold">
+                  <span className="text-accent-foreground">{lang.name}</span>
+                  <span className="text-accent">{lang.level}%</span>
+                </div>
+                <Progress value={lang.level} className="h-2 bg-accent/10" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 );
@@ -278,60 +406,22 @@ const Experience = () => (
             </div>
           </div>
           <ul className="grid gap-4 sm:grid-cols-2">
-            {["Managed 400–500+ daily transactions in a high-volume environment", "Delivered excellent customer service and improved satisfaction", "Operated efficiently during peak hours to reduce waiting time", "Processed payments accurately using POS systems", "Maintained food safety and hygiene standards", "Trained and supported new team members", "Applied upselling techniques to support revenue growth", "Resolved customer issues professionally"].map((item) => (
+            {[
+              "Managed 400-500+ daily transactions in a high-volume environment",
+              "Delivered excellent customer service and improved satisfaction",
+              "Operated efficiently during peak hours, reducing waiting time",
+              "Processed payments with high accuracy using POS systems",
+              "Maintained food safety and hygiene standards",
+              "Trained and supported new team members",
+              "Applied upselling techniques to support revenue growth",
+              "Resolved customer issues professionally"
+            ].map((item) => (
               <li key={item} className="flex gap-3 rounded-[1.5rem] bg-primary-foreground/10 p-4 text-sm font-bold leading-6">
                 <CheckCircle2 className="mt-0.5 shrink-0" size={18} aria-hidden="true" /> {item}
               </li>
             ))}
           </ul>
         </article>
-      </div>
-    </div>
-  </section>
-);
-
-const GalleryImage = ({ src, alt, className = "", imgClassName = "object-cover" }: { src: string; alt: string; className?: string; imgClassName?: string }) => (
-  <figure className={`group/image overflow-hidden rounded-[2rem] border border-border/60 bg-surface p-2 shadow-soft ${className}`}>
-    <img src={src} alt={alt} className={`h-full min-h-48 w-full rounded-[1.35rem] transition-transform duration-700 group-hover/image:scale-105 ${imgClassName}`} loading="lazy" />
-  </figure>
-);
-
-const Reflection = () => (
-  <section id="reflection" className="relative overflow-hidden px-4 py-24 sm:px-6 lg:px-8">
-    <OrganicBlob variant="one" className="right-[-10rem] top-20 h-[30rem] w-[30rem] bg-accent/70" />
-    <div className="mx-auto max-w-7xl">
-      <div className="mx-auto mb-12 max-w-4xl text-center">
-        <p className="mb-3 font-body text-sm font-extrabold uppercase tracking-[0.18em] text-secondary">Reflection</p>
-        <h2 className="font-display text-4xl font-bold leading-tight text-foreground md:text-5xl">Employability & Experience Gallery</h2>
-        <p className="mt-5 text-lg leading-8 text-muted-foreground">A visual reflection of my journey at Ravensbourne University London.</p>
-      </div>
-      <div className="mb-14 grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-        <div className="rounded-[4rem_2rem_3rem_2rem] border border-border/60 bg-accent/45 p-6 shadow-soft md:p-8">
-          <p className="text-xl font-extrabold leading-8 text-foreground">I’m passionate about learning, growing, and helping businesses thrive through strategic thinking and collaboration.</p>
-          <p className="mt-5 leading-8 text-muted-foreground">This site showcases my employability skills and experiences as I prepare for a successful career in business and entrepreneurship. From university workshops to community events, every moment has shaped my professional identity.</p>
-        </div>
-        <GalleryImage src={headshot} alt="Tamim Mia professional portrait" className="rotate-[-1deg]" imgClassName="aspect-[16/11] object-cover" />
-      </div>
-      <div className="grid gap-8">
-        {reflectionStories.map((story, index) => (
-          <article key={story.title} className={`grid gap-5 rounded-[3rem_2rem_4rem_2rem] border border-border/60 bg-surface/80 p-4 shadow-soft md:p-6 lg:grid-cols-2 lg:items-stretch ${index % 2 ? "lg:[&>div:first-child]:order-2" : ""}`}>
-            <div className="flex min-h-72 flex-col justify-between rounded-[2.25rem] bg-muted/55 p-6 md:p-8">
-              <div className="flex items-start justify-between gap-4">
-                <span className="font-display text-5xl font-black text-secondary/70">{story.number}</span>
-                <Sparkles className="shrink-0 text-primary" size={26} aria-hidden="true" />
-              </div>
-              <div>
-                <h3 className="mt-8 font-display text-3xl font-black leading-tight text-foreground md:text-4xl">{story.title}</h3>
-                <p className="mt-4 text-base font-bold leading-8 text-muted-foreground md:text-lg">{story.note}</p>
-              </div>
-            </div>
-            <div className="grid auto-rows-[12rem] grid-cols-2 gap-3 sm:auto-rows-[14rem] md:grid-cols-3 lg:auto-rows-[11rem]">
-              {story.images.map((image, imageIndex) => (
-                <GalleryImage key={image} src={image} alt={`${story.title} image ${imageIndex + 1}`} className={`${imageIndex === 0 ? "col-span-2 row-span-2 md:col-span-2" : ""} ${story.images.length === 1 ? "col-span-2 row-span-2 md:col-span-3" : ""}`} />
-              ))}
-            </div>
-          </article>
-        ))}
       </div>
     </div>
   </section>
@@ -382,6 +472,8 @@ export const ReflectionPage = () => pageSections.reflection;
 export const ContactPage = () => pageSections.contact;
 
 const Portfolio = ({ children }: { children: ReactNode }) => {
+  const { pathname } = useLocation();
+
   useEffect(() => {
     const structuredData = {
       "@context": "https://schema.org",
@@ -401,12 +493,45 @@ const Portfolio = ({ children }: { children: ReactNode }) => {
     return () => script.remove();
   }, []);
 
+  const getFooterBgColor = () => {
+    switch (pathname) {
+      case "/":
+        return "bg-background";
+      case "/about":
+        return "bg-background";
+      case "/education":
+        return "bg-secondary";
+      case "/skills":
+        return "bg-surface/30";
+      case "/experience":
+        return "bg-primary";
+      case "/reflection":
+        return "bg-background";
+      case "/contact":
+        return "bg-secondary";
+      default:
+        return "bg-background";
+    }
+  };
+
+  const getFooterTextColor = () => {
+    switch (pathname) {
+      case "/experience":
+        return "text-primary-foreground/60";
+      case "/contact":
+      case "/education":
+        return "text-secondary-foreground/60";
+      default:
+        return "text-muted-foreground";
+    }
+  };
+
   return (
     <main className="min-h-screen overflow-hidden bg-background font-body text-foreground">
       <Navigation />
       {children}
-      <footer className="px-4 py-10 text-center text-sm font-bold text-muted-foreground">
-        <p>© 2026 Tamim Mia ·</p>
+      <footer className={`px-4 py-10 text-center text-sm font-bold transition-colors duration-500 ${getFooterBgColor()} ${getFooterTextColor()}`}>
+        <p>© 2026 Tamim Mia · All rights reserved</p>
       </footer>
     </main>
   );

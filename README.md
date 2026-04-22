@@ -1,3 +1,3 @@
-# Welcome to your Lovable project
+# Tamim Mia Portfolio
 
-TODO: Document your project here
+Business Management undergraduate portfolio for Tamim Mia, focused on business strategy, customer engagement, and leadership.
