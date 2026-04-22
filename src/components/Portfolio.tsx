@@ -759,11 +759,19 @@ const Portfolio = ({ children }: { children: ReactNode }) => {
       "@type": "Person",
       name: "Tamim Mia",
       url: "https://tamimmia.netlify.app/",
-      jobTitle: "Business Management Undergraduate",
+      jobTitle: "Business Management Student & Sales Professional",
       email: "mailto:Imtiaztamim521@gmail.com",
       telephone: "+44 7424 630174",
-      address: { "@type": "PostalAddress", addressLocality: "London", addressCountry: "GB" },
-      alumniOf: "Ravensbourne University London",
+      address: { 
+        "@type": "PostalAddress", 
+        "addressLocality": "London", 
+        "postalCode": "E1 0PQ",
+        "addressCountry": "GB" 
+      },
+      alumniOf: {
+        "@type": "CollegeOrUniversity",
+        "name": "Ravensbourne University London"
+      },
       sameAs: ["https://www.linkedin.com/in/tamim-mia-08a719349"],
     };
     const script = document.createElement("script");
