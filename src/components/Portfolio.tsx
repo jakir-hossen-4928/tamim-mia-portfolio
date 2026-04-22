@@ -1,4 +1,4 @@
-import { ArrowUpRight, BriefcaseBusiness, CheckCircle2, GraduationCap, HeartHandshake, Leaf, Linkedin, Mail, MapPin, Menu, Phone, Send, Sparkles, Sprout, X } from "lucide-react";
+import { ArrowUpRight, BriefcaseBusiness, CheckCircle2, Download, GraduationCap, HeartHandshake, Leaf, Linkedin, Mail, MapPin, Menu, Phone, Send, Sparkles, Sprout, X } from "lucide-react";
 import { type ReactNode, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -43,64 +43,65 @@ const navItems = [
 ];
 
 const skills = [
-  "Customer engagement",
-  "Consultative selling",
-  "POS accuracy",
-  "Upselling strategy",
-  "Team support",
-  "Market analysis",
-  "Business strategy",
-  "Publicity & publication",
-  "Problem solving",
-  "High-volume operations",
+  "Customer Service",
+  "Team Collaboration",
+  "Problem Solving",
+  "Time Management",
+  "Operations Support",
+  "Sales & Upselling",
+  "Data Handling",
+  "POS Systems",
   "Communication",
-  "Customer success mindset",
+  "Attention to Detail",
+  "Adaptability",
+  "Training & Onboarding",
 ];
 
 const stats = [
-  { value: "400+", label: "daily customer transactions" },
+  { value: "400–500+", label: "daily customer transactions" },
   { value: "2028", label: "expected graduation" },
   { value: "2", label: "LinkedIn Learning certificates" },
-  { value: "7", label: "reflection galleries" },
+  { value: "Level 5", label: "Business Management student" },
 ];
 
 const organicRadii = ["rounded-organic-1", "rounded-organic-2", "rounded-organic-3", "rounded-organic-4"];
 
-const reflections = [
+const reflectionStories = [
   {
-    title: "Class activities",
-    note: "Collaborative learning, peer feedback, and business practice in action.",
-    images: [classOne, classTwo, classThree, classFour, classFive],
+    number: "01",
+    title: "Teamwork & Collaboration",
+    note: "While working on group presentations, I led research and segmentation efforts. I contribute to team projects with preparation, clear communication, and constructive feedback.",
+    images: [classOne, classTwo, classThree],
   },
   {
-    title: "Insight Hour Event",
-    note: "Industry conversations that shaped my understanding of professional growth.",
+    number: "02",
+    title: "University Insight",
+    note: "Engaging with creative professionals at Ravensbourne helped me understand how creativity, innovation, and business strategy work together.",
     images: [insightOne, insightTwo, insightThree, insightFour, insightFive, insightSix],
   },
   {
-    title: "RaveLate Event",
-    note: "Event energy, coordination, and community moments captured through participation.",
+    number: "03",
+    title: "Career Insight",
+    note: "Career fairs and insight hours gave me direct exposure to recruitment trends, employer expectations, and the qualities companies value most.",
+    images: [contentCertificate, brandingCertificate, presentationOne],
+  },
+  {
+    number: "04",
+    title: "“Prem O Porob”",
+    note: "Proud to be part of celebrating Valentine’s Day and Pohela Falgun at Ravensbourne, bringing the community together through culture, music, and performance.",
     images: [raveOne, raveTwo, raveThree, raveFour],
   },
   {
-    title: "Community",
-    note: "Building belonging through shared cultural and student experiences.",
-    images: [communityOne, communityTwo],
+    number: "05",
+    title: "Community Leadership",
+    note: "Community building has strengthened my discipline, creative collaboration, audience awareness, and ability to connect with diverse groups.",
+    images: [communityOne, communityTwo, leadershipOne, leadershipTwo, publicationOne, publicationTwo],
   },
   {
-    title: "Leadership",
-    note: "Developing confidence through responsibility, service, and visible contribution.",
-    images: [leadershipOne, leadershipTwo],
-  },
-  {
-    title: "Publicity & Publication Secretary",
-    note: "Serving the Bangladeshi Community through communication and representation.",
-    images: [publicationOne, publicationTwo],
-  },
-  {
-    title: "Presentation",
-    note: "Sharing ideas clearly, confidently, and with audience awareness.",
-    images: [presentationOne, presentationTwo],
+    number: "06",
+    title: "Looking Ahead",
+    note: "My goal is to become a business consultant, gain real-world experience, and eventually start my own business while continuing to build skills in sales, strategy, and leadership.",
+    images: [presentationTwo],
   },
 ];
 
@@ -166,7 +167,7 @@ const Hero = () => (
         </p>
         <h1 className="font-display text-5xl font-black leading-[0.98] text-foreground md:text-7xl">Tamim Mia</h1>
         <p className="mt-6 max-w-2xl text-xl leading-9 text-muted-foreground">
-          Business Management student at Ravensbourne University London, building a career in technology sales through customer engagement, operations, and community leadership.
+          Business Management undergraduate at Ravensbourne University London with hands-on experience in fast-paced customer operations, high-volume transactions, customer service, and operational efficiency.
         </p>
         <div className="mt-8 flex flex-col gap-4 sm:flex-row">
           <Button asChild variant="organic" size="xl">
@@ -186,8 +187,8 @@ const Hero = () => (
           <img src={headshot} alt="Tamim Mia portrait" className="aspect-[4/5] w-full rounded-[30%_70%_70%_30%_/_30%_30%_70%_70%] object-cover transition-transform duration-700 group-hover:scale-[1.02]" />
         </div>
         <div className="absolute -bottom-6 right-4 max-w-[14rem] rounded-[2rem_4rem_2rem_3rem] border border-border/60 bg-surface/90 p-5 shadow-soft backdrop-blur">
-          <p className="font-display text-3xl font-bold text-primary">SaaS Sales</p>
-          <p className="mt-1 text-sm font-bold text-muted-foreground">Customer success focused internship goal</p>
+          <p className="font-display text-3xl font-bold text-primary">Corporate Internship</p>
+          <p className="mt-1 text-sm font-bold text-muted-foreground">Business, sales, and operations focused</p>
         </div>
       </div>
     </div>
@@ -201,7 +202,7 @@ const About = () => (
         <HeartHandshake className="mb-6 text-primary" size={42} aria-hidden="true" />
         <h2 className="font-display text-4xl font-bold text-foreground">About Tamim</h2>
         <p className="mt-5 text-lg leading-8 text-muted-foreground">
-          I am motivated, adaptable, and goal-oriented. My background combines academic business study with hands-on customer operations in London, where speed, accuracy, empathy, and teamwork matter every day.
+          Business Management undergraduate at Ravensbourne University London with hands-on experience in fast-paced customer operations. Skilled in managing high-volume transactions, delivering excellent customer service, and supporting operational efficiency.
         </p>
       </div>
       <div className="grid gap-5 sm:grid-cols-2">
@@ -220,14 +221,14 @@ const Education = () => (
   <section id="education" className="relative overflow-hidden bg-muted/35 px-4 py-24 sm:px-6 lg:px-8">
     <OrganicBlob variant="three" className="bottom-[-8rem] left-1/2 h-96 w-96 bg-secondary/20" />
     <SectionHeading eyebrow="Education" title="Learning business through strategy, marketing, and practice">
-      Academic work at Ravensbourne University London supports my interest in SaaS sales, CRM, consumer behaviour, and data-informed growth.
+      Academic work at Ravensbourne University London supports my interest in business strategy, marketing, consumer behaviour, SaaS sales, and data-informed growth.
     </SectionHeading>
     <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-3">
       <article className="rounded-[2rem_5rem_2rem_3rem] border border-border/60 bg-surface p-8 shadow-soft lg:col-span-2">
         <GraduationCap className="mb-6 text-primary" size={44} aria-hidden="true" />
         <h3 className="font-display text-3xl font-bold text-foreground">Ravensbourne University London</h3>
         <p className="mt-3 text-lg font-extrabold text-primary">Business Management undergraduate — Level 5 student</p>
-        <p className="mt-5 leading-8 text-muted-foreground">Expected to finish by January 2028. Current focus areas include marketing, consumer behaviour, business strategy, market analysis, and data-driven projects.</p>
+        <p className="mt-5 leading-8 text-muted-foreground">BSc (Hons) Business Management in London. Level 5 student, expected to finish by January 2028. Current focus areas include marketing, consumer behaviour, business strategy, market analysis, and data-driven projects.</p>
       </article>
       <div className="grid gap-8">
         {[contentCertificate, brandingCertificate].map((certificate, index) => (
@@ -266,14 +267,14 @@ const Experience = () => (
         <div>
           <p className="mb-3 font-body text-sm font-extrabold uppercase tracking-[0.18em] text-primary-foreground/75">Experience</p>
           <h2 className="font-display text-4xl font-bold leading-tight md:text-5xl">Fast-paced service turned into sales discipline</h2>
-          <p className="mt-6 text-lg leading-8 text-primary-foreground/80">At Pret A Manger in London, I developed operational accuracy, customer rapport, and resilience under pressure.</p>
+          <p className="mt-6 text-lg leading-8 text-primary-foreground/80">At Pret A Manger in London, I developed sales discipline, operational accuracy, customer rapport, and resilience under pressure from January 2025 to present.</p>
         </div>
         <article className="rounded-[4rem_2rem_3rem_2rem] border border-primary-foreground/20 bg-primary-foreground/10 p-8 shadow-float backdrop-blur">
           <div className="mb-6 flex flex-wrap items-center gap-3">
             <span className="grid h-14 w-14 place-items-center rounded-2xl bg-primary-foreground text-primary"><BriefcaseBusiness size={28} aria-hidden="true" /></span>
             <div>
               <h3 className="font-display text-3xl font-bold">Pret A Manger</h3>
-              <p className="font-bold text-primary-foreground/75">Team Member · London</p>
+              <p className="font-bold text-primary-foreground/75">Team Member (Customer Operations) · London · Jan 2025 - Present</p>
             </div>
           </div>
           <ul className="grid gap-4 sm:grid-cols-2">
@@ -289,31 +290,49 @@ const Experience = () => (
   </section>
 );
 
+const GalleryImage = ({ src, alt, className = "", imgClassName = "object-cover" }: { src: string; alt: string; className?: string; imgClassName?: string }) => (
+  <figure className={`group/image overflow-hidden rounded-[2rem] border border-border/60 bg-surface p-2 shadow-soft ${className}`}>
+    <img src={src} alt={alt} className={`h-full min-h-48 w-full rounded-[1.35rem] transition-transform duration-700 group-hover/image:scale-105 ${imgClassName}`} loading="lazy" />
+  </figure>
+);
+
 const Reflection = () => (
   <section id="reflection" className="relative overflow-hidden px-4 py-24 sm:px-6 lg:px-8">
     <OrganicBlob variant="one" className="right-[-10rem] top-20 h-[30rem] w-[30rem] bg-accent/70" />
-    <SectionHeading eyebrow="Reflection" title="A bento gallery of learning, community, and leadership">
-      Moments from class activities, events, presentations, community work, and my role as publicity and publication secretary.
-    </SectionHeading>
-    <div className="mx-auto grid max-w-7xl gap-5 sm:grid-cols-2 lg:auto-rows-[24rem] lg:grid-cols-6 lg:gap-6">
-      {reflections.map((group, index) => (
-        <article key={group.title} className={`group relative min-h-[22rem] overflow-hidden ${organicRadii[index % organicRadii.length]} border border-border/60 bg-surface shadow-soft transition-all duration-500 hover:-translate-y-1 hover:shadow-float ${index === 0 || index === 1 ? "lg:col-span-3 lg:row-span-2 lg:min-h-[32rem]" : index === 2 ? "lg:col-span-4" : "lg:col-span-2"}`}>
-          <div className="grid h-full min-h-[22rem] grid-cols-2 gap-1.5 p-2 lg:min-h-full">
-            {group.images.slice(0, 4).map((image, imageIndex) => (
-              <img key={image} src={image} alt={`${group.title} reflection image ${imageIndex + 1}`} className={`h-full min-h-36 w-full rounded-[1.35rem] object-cover transition-transform duration-700 group-hover:scale-105 ${imageIndex === 0 && group.images.length < 3 ? "col-span-2" : ""}`} loading="lazy" />
-            ))}
-          </div>
-          <div className="absolute inset-x-3 bottom-3 rounded-[1.5rem_2rem_1.5rem_1.8rem] border border-border/50 bg-surface/92 p-4 shadow-soft backdrop-blur-md sm:inset-x-4 sm:bottom-4">
-            <div className="flex items-start justify-between gap-3">
-              <div>
-                <h3 className="font-display text-xl font-black leading-tight text-foreground sm:text-2xl">{group.title}</h3>
-                <p className="mt-1 line-clamp-2 text-sm font-bold leading-6 text-muted-foreground">{group.note}</p>
+    <div className="mx-auto max-w-7xl">
+      <div className="mx-auto mb-12 max-w-4xl text-center">
+        <p className="mb-3 font-body text-sm font-extrabold uppercase tracking-[0.18em] text-secondary">Reflection</p>
+        <h2 className="font-display text-4xl font-bold leading-tight text-foreground md:text-5xl">Employability & Experience Gallery</h2>
+        <p className="mt-5 text-lg leading-8 text-muted-foreground">A visual reflection of my journey at Ravensbourne University London.</p>
+      </div>
+      <div className="mb-14 grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+        <div className="rounded-[4rem_2rem_3rem_2rem] border border-border/60 bg-accent/45 p-6 shadow-soft md:p-8">
+          <p className="text-xl font-extrabold leading-8 text-foreground">I’m passionate about learning, growing, and helping businesses thrive through strategic thinking and collaboration.</p>
+          <p className="mt-5 leading-8 text-muted-foreground">This site showcases my employability skills and experiences as I prepare for a successful career in business and entrepreneurship. From university workshops to community events, every moment has shaped my professional identity.</p>
+        </div>
+        <GalleryImage src={headshot} alt="Tamim Mia professional portrait" className="rotate-[-1deg]" imgClassName="aspect-[16/11] object-cover" />
+      </div>
+      <div className="grid gap-8">
+        {reflectionStories.map((story, index) => (
+          <article key={story.title} className={`grid gap-5 rounded-[3rem_2rem_4rem_2rem] border border-border/60 bg-surface/80 p-4 shadow-soft md:p-6 lg:grid-cols-2 lg:items-stretch ${index % 2 ? "lg:[&>div:first-child]:order-2" : ""}`}>
+            <div className="flex min-h-72 flex-col justify-between rounded-[2.25rem] bg-muted/55 p-6 md:p-8">
+              <div className="flex items-start justify-between gap-4">
+                <span className="font-display text-5xl font-black text-secondary/70">{story.number}</span>
+                <Sparkles className="shrink-0 text-primary" size={26} aria-hidden="true" />
               </div>
-              <Sparkles className="shrink-0 text-secondary" size={22} aria-hidden="true" />
+              <div>
+                <h3 className="mt-8 font-display text-3xl font-black leading-tight text-foreground md:text-4xl">{story.title}</h3>
+                <p className="mt-4 text-base font-bold leading-8 text-muted-foreground md:text-lg">{story.note}</p>
+              </div>
             </div>
-          </div>
-        </article>
-      ))}
+            <div className="grid auto-rows-[12rem] grid-cols-2 gap-3 sm:auto-rows-[14rem] md:grid-cols-3 lg:auto-rows-[11rem]">
+              {story.images.map((image, imageIndex) => (
+                <GalleryImage key={image} src={image} alt={`${story.title} image ${imageIndex + 1}`} className={`${imageIndex === 0 ? "col-span-2 row-span-2 md:col-span-2" : ""} ${story.images.length === 1 ? "col-span-2 row-span-2 md:col-span-3" : ""}`} />
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
     </div>
   </section>
 );
@@ -328,7 +347,8 @@ const Contact = () => (
           <a href="mailto:Imtiaztamim521@gmail.com" className="flex items-center gap-4 rounded-full bg-secondary-foreground/12 p-4 font-bold transition-colors hover:bg-secondary-foreground/18"><Mail size={22} /> Imtiaztamim521@gmail.com</a>
           <a href="tel:+447424630174" className="flex items-center gap-4 rounded-full bg-secondary-foreground/12 p-4 font-bold transition-colors hover:bg-secondary-foreground/18"><Phone size={22} /> +44 7424 630174</a>
           <a href="https://www.linkedin.com/in/tamim-mia-08a719349" target="_blank" rel="noreferrer" className="flex items-center gap-4 rounded-full bg-secondary-foreground/12 p-4 font-bold transition-colors hover:bg-secondary-foreground/18"><Linkedin size={22} /> LinkedIn Profile</a>
-          <p className="flex items-center gap-4 rounded-full bg-secondary-foreground/12 p-4 font-bold"><MapPin size={22} /> London, United Kingdom</p>
+          <a href="/Tamim-Mia-CV.pdf" download className="flex items-center gap-4 rounded-full bg-secondary-foreground/12 p-4 font-bold transition-colors hover:bg-secondary-foreground/18"><Download size={22} /> Download CV</a>
+          <p className="flex items-center gap-4 rounded-full bg-secondary-foreground/12 p-4 font-bold"><MapPin size={22} /> 19 W Arbour Street, E1 0PQ, London, GB</p>
         </div>
       </div>
       <form action={contactEndpoint} method="POST" className="rounded-[4rem_2rem_3rem_2rem] border border-secondary-foreground/25 bg-secondary-foreground/12 p-6 shadow-float backdrop-blur md:p-8">
@@ -386,7 +406,7 @@ const Portfolio = ({ children }: { children: ReactNode }) => {
       <Navigation />
       {children}
       <footer className="px-4 py-10 text-center text-sm font-bold text-muted-foreground">
-        <p>© {new Date().getFullYear()} Tamim Mia · Business Management Portfolio</p>
+        <p>© 2026 Tamim Mia ·</p>
       </footer>
     </main>
   );
