@@ -167,7 +167,7 @@ const Hero = () => (
         </p>
         <h1 className="font-display text-5xl font-black leading-[0.98] text-foreground md:text-7xl">Tamim Mia</h1>
         <p className="mt-6 max-w-2xl text-xl leading-9 text-muted-foreground">
-          Business Management student at Ravensbourne University London, building a career in technology sales through customer engagement, operations, and community leadership.
+          Business Management undergraduate at Ravensbourne University London with hands-on experience in fast-paced customer operations, high-volume transactions, customer service, and operational efficiency.
         </p>
         <div className="mt-8 flex flex-col gap-4 sm:flex-row">
           <Button asChild variant="organic" size="xl">
@@ -187,8 +187,8 @@ const Hero = () => (
           <img src={headshot} alt="Tamim Mia portrait" className="aspect-[4/5] w-full rounded-[30%_70%_70%_30%_/_30%_30%_70%_70%] object-cover transition-transform duration-700 group-hover:scale-[1.02]" />
         </div>
         <div className="absolute -bottom-6 right-4 max-w-[14rem] rounded-[2rem_4rem_2rem_3rem] border border-border/60 bg-surface/90 p-5 shadow-soft backdrop-blur">
-          <p className="font-display text-3xl font-bold text-primary">SaaS Sales</p>
-          <p className="mt-1 text-sm font-bold text-muted-foreground">Customer success focused internship goal</p>
+          <p className="font-display text-3xl font-bold text-primary">Corporate Internship</p>
+          <p className="mt-1 text-sm font-bold text-muted-foreground">Business, sales, and operations focused</p>
         </div>
       </div>
     </div>
@@ -202,7 +202,7 @@ const About = () => (
         <HeartHandshake className="mb-6 text-primary" size={42} aria-hidden="true" />
         <h2 className="font-display text-4xl font-bold text-foreground">About Tamim</h2>
         <p className="mt-5 text-lg leading-8 text-muted-foreground">
-          I am motivated, adaptable, and goal-oriented. My background combines academic business study with hands-on customer operations in London, where speed, accuracy, empathy, and teamwork matter every day.
+          Business Management undergraduate at Ravensbourne University London with hands-on experience in fast-paced customer operations. Skilled in managing high-volume transactions, delivering excellent customer service, and supporting operational efficiency.
         </p>
       </div>
       <div className="grid gap-5 sm:grid-cols-2">
@@ -221,14 +221,14 @@ const Education = () => (
   <section id="education" className="relative overflow-hidden bg-muted/35 px-4 py-24 sm:px-6 lg:px-8">
     <OrganicBlob variant="three" className="bottom-[-8rem] left-1/2 h-96 w-96 bg-secondary/20" />
     <SectionHeading eyebrow="Education" title="Learning business through strategy, marketing, and practice">
-      Academic work at Ravensbourne University London supports my interest in SaaS sales, CRM, consumer behaviour, and data-informed growth.
+      Academic work at Ravensbourne University London supports my interest in business strategy, marketing, consumer behaviour, SaaS sales, and data-informed growth.
     </SectionHeading>
     <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-3">
       <article className="rounded-[2rem_5rem_2rem_3rem] border border-border/60 bg-surface p-8 shadow-soft lg:col-span-2">
         <GraduationCap className="mb-6 text-primary" size={44} aria-hidden="true" />
         <h3 className="font-display text-3xl font-bold text-foreground">Ravensbourne University London</h3>
         <p className="mt-3 text-lg font-extrabold text-primary">Business Management undergraduate — Level 5 student</p>
-        <p className="mt-5 leading-8 text-muted-foreground">Expected to finish by January 2028. Current focus areas include marketing, consumer behaviour, business strategy, market analysis, and data-driven projects.</p>
+        <p className="mt-5 leading-8 text-muted-foreground">BSc (Hons) Business Management in London. Level 5 student, expected to finish by January 2028. Current focus areas include marketing, consumer behaviour, business strategy, market analysis, and data-driven projects.</p>
       </article>
       <div className="grid gap-8">
         {[contentCertificate, brandingCertificate].map((certificate, index) => (
