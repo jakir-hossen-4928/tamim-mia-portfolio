@@ -361,7 +361,7 @@ export const ExperiencePage = () => pageSections.experience;
 export const ReflectionPage = () => pageSections.reflection;
 export const ContactPage = () => pageSections.contact;
 
-const Portfolio = () => {
+const Portfolio = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     const structuredData = {
       "@context": "https://schema.org",
