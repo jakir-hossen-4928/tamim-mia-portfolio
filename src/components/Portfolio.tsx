@@ -267,14 +267,14 @@ const Experience = () => (
         <div>
           <p className="mb-3 font-body text-sm font-extrabold uppercase tracking-[0.18em] text-primary-foreground/75">Experience</p>
           <h2 className="font-display text-4xl font-bold leading-tight md:text-5xl">Fast-paced service turned into sales discipline</h2>
-          <p className="mt-6 text-lg leading-8 text-primary-foreground/80">At Pret A Manger in London, I developed operational accuracy, customer rapport, and resilience under pressure.</p>
+          <p className="mt-6 text-lg leading-8 text-primary-foreground/80">At Pret A Manger in London, I developed sales discipline, operational accuracy, customer rapport, and resilience under pressure from January 2025 to present.</p>
         </div>
         <article className="rounded-[4rem_2rem_3rem_2rem] border border-primary-foreground/20 bg-primary-foreground/10 p-8 shadow-float backdrop-blur">
           <div className="mb-6 flex flex-wrap items-center gap-3">
             <span className="grid h-14 w-14 place-items-center rounded-2xl bg-primary-foreground text-primary"><BriefcaseBusiness size={28} aria-hidden="true" /></span>
             <div>
               <h3 className="font-display text-3xl font-bold">Pret A Manger</h3>
-              <p className="font-bold text-primary-foreground/75">Team Member · London</p>
+              <p className="font-bold text-primary-foreground/75">Team Member (Customer Operations) · London · Jan 2025 - Present</p>
             </div>
           </div>
           <ul className="grid gap-4 sm:grid-cols-2">
@@ -347,7 +347,8 @@ const Contact = () => (
           <a href="mailto:Imtiaztamim521@gmail.com" className="flex items-center gap-4 rounded-full bg-secondary-foreground/12 p-4 font-bold transition-colors hover:bg-secondary-foreground/18"><Mail size={22} /> Imtiaztamim521@gmail.com</a>
           <a href="tel:+447424630174" className="flex items-center gap-4 rounded-full bg-secondary-foreground/12 p-4 font-bold transition-colors hover:bg-secondary-foreground/18"><Phone size={22} /> +44 7424 630174</a>
           <a href="https://www.linkedin.com/in/tamim-mia-08a719349" target="_blank" rel="noreferrer" className="flex items-center gap-4 rounded-full bg-secondary-foreground/12 p-4 font-bold transition-colors hover:bg-secondary-foreground/18"><Linkedin size={22} /> LinkedIn Profile</a>
-          <p className="flex items-center gap-4 rounded-full bg-secondary-foreground/12 p-4 font-bold"><MapPin size={22} /> London, United Kingdom</p>
+          <a href="/Tamim-Mia-CV.pdf" download className="flex items-center gap-4 rounded-full bg-secondary-foreground/12 p-4 font-bold transition-colors hover:bg-secondary-foreground/18"><Download size={22} /> Download CV</a>
+          <p className="flex items-center gap-4 rounded-full bg-secondary-foreground/12 p-4 font-bold"><MapPin size={22} /> 19 W Arbour Street, E1 0PQ, London, GB</p>
         </div>
       </div>
       <form action={contactEndpoint} method="POST" className="rounded-[4rem_2rem_3rem_2rem] border border-secondary-foreground/25 bg-secondary-foreground/12 p-6 shadow-float backdrop-blur md:p-8">
@@ -405,7 +406,7 @@ const Portfolio = ({ children }: { children: ReactNode }) => {
       <Navigation />
       {children}
       <footer className="px-4 py-10 text-center text-sm font-bold text-muted-foreground">
-        <p>© {new Date().getFullYear()} Tamim Mia · Business Management Portfolio</p>
+        <p>© 2026 Tamim Mia ·</p>
       </footer>
     </main>
   );
