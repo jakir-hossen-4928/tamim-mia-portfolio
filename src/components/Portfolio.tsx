@@ -122,21 +122,21 @@ const Navigation = () => {
   return (
     <header className="fixed inset-x-0 top-4 z-50 px-4">
       <nav className="mx-auto flex max-w-6xl items-center justify-between rounded-full border border-border/60 bg-surface/75 px-4 py-3 shadow-soft backdrop-blur-md">
-        <a href="#home" className="flex items-center gap-3 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
+        <Link to="/" className="flex items-center gap-3 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
           <span className="grid h-10 w-10 place-items-center rounded-full bg-primary text-primary-foreground shadow-soft">
             <Leaf size={20} aria-hidden="true" />
           </span>
           <span className="font-display text-xl font-bold text-foreground">Tamim Mia</span>
-        </a>
+        </Link>
         <div className="hidden items-center gap-1 md:flex">
           {navItems.map((item) => (
-            <a key={item.href} href={item.href} className="rounded-full px-4 py-2 text-sm font-bold text-accent-foreground transition-all duration-300 hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
+            <NavLink key={item.href} to={item.href} className={({ isActive }) => `rounded-full px-4 py-2 text-sm font-bold transition-all duration-300 hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${isActive ? "bg-accent text-primary" : "text-accent-foreground"}`}>
               {item.label}
-            </a>
+            </NavLink>
           ))}
         </div>
         <Button asChild variant="organic" size="sm" className="hidden md:inline-flex">
-          <a href="#contact">Hire me</a>
+          <Link to="/contact">Hire me</Link>
         </Button>
         <button className="grid h-11 w-11 place-items-center rounded-full bg-accent text-accent-foreground md:hidden" onClick={() => setOpen((value) => !value)} aria-label="Toggle menu" aria-expanded={open}>
           {open ? <X size={20} /> : <Menu size={20} />}
@@ -145,9 +145,9 @@ const Navigation = () => {
       {open ? (
         <div className="mx-auto mt-3 max-w-6xl rounded-[2rem] border border-border/60 bg-surface/95 p-3 shadow-float backdrop-blur-md md:hidden">
           {navItems.map((item) => (
-            <a key={item.href} href={item.href} onClick={() => setOpen(false)} className="block rounded-full px-5 py-3 font-bold text-accent-foreground transition-colors hover:bg-accent">
+            <NavLink key={item.href} to={item.href} onClick={() => setOpen(false)} className={({ isActive }) => `block rounded-full px-5 py-3 font-bold transition-colors hover:bg-accent ${isActive ? "bg-accent text-primary" : "text-accent-foreground"}`}>
               {item.label}
-            </a>
+            </NavLink>
           ))}
         </div>
       ) : null}
