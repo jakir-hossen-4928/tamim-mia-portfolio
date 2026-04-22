@@ -295,19 +295,19 @@ const Reflection = () => (
     <SectionHeading eyebrow="Reflection" title="A bento gallery of learning, community, and leadership">
       Moments from class activities, events, presentations, community work, and my role as publicity and publication secretary.
     </SectionHeading>
-    <div className="mx-auto grid max-w-7xl auto-rows-[minmax(18rem,auto)] gap-6 md:grid-cols-6">
+    <div className="mx-auto grid max-w-7xl gap-5 sm:grid-cols-2 lg:auto-rows-[24rem] lg:grid-cols-6 lg:gap-6">
       {reflections.map((group, index) => (
-        <article key={group.title} className={`group relative overflow-hidden ${organicRadii[index % organicRadii.length]} border border-border/60 bg-surface shadow-soft transition-all duration-500 hover:-translate-y-1 hover:shadow-float ${index === 0 || index === 1 ? "md:col-span-3 md:row-span-2" : index === 2 ? "md:col-span-4" : "md:col-span-2"}`}>
-          <div className="grid h-full grid-cols-2 gap-1 p-2">
+        <article key={group.title} className={`group relative min-h-[22rem] overflow-hidden ${organicRadii[index % organicRadii.length]} border border-border/60 bg-surface shadow-soft transition-all duration-500 hover:-translate-y-1 hover:shadow-float ${index === 0 || index === 1 ? "lg:col-span-3 lg:row-span-2 lg:min-h-[32rem]" : index === 2 ? "lg:col-span-4" : "lg:col-span-2"}`}>
+          <div className="grid h-full min-h-[22rem] grid-cols-2 gap-1.5 p-2 lg:min-h-full">
             {group.images.slice(0, 4).map((image, imageIndex) => (
-              <img key={image} src={image} alt={`${group.title} reflection image ${imageIndex + 1}`} className={`h-full min-h-36 w-full object-cover transition-transform duration-700 group-hover:scale-105 ${imageIndex === 0 && group.images.length < 3 ? "col-span-2" : ""} rounded-[1.4rem]`} loading="lazy" />
+              <img key={image} src={image} alt={`${group.title} reflection image ${imageIndex + 1}`} className={`h-full min-h-36 w-full rounded-[1.35rem] object-cover transition-transform duration-700 group-hover:scale-105 ${imageIndex === 0 && group.images.length < 3 ? "col-span-2" : ""}`} loading="lazy" />
             ))}
           </div>
-          <div className="absolute inset-x-3 bottom-3 rounded-[1.5rem] border border-surface/50 bg-surface/88 p-4 shadow-soft backdrop-blur-md">
-            <div className="flex items-start justify-between gap-4">
+          <div className="absolute inset-x-3 bottom-3 rounded-[1.5rem_2rem_1.5rem_1.8rem] border border-border/50 bg-surface/92 p-4 shadow-soft backdrop-blur-md sm:inset-x-4 sm:bottom-4">
+            <div className="flex items-start justify-between gap-3">
               <div>
-                <h3 className="font-display text-2xl font-bold text-foreground">{group.title}</h3>
-                <p className="mt-1 text-sm font-bold leading-6 text-muted-foreground">{group.note}</p>
+                <h3 className="font-display text-xl font-black leading-tight text-foreground sm:text-2xl">{group.title}</h3>
+                <p className="mt-1 line-clamp-2 text-sm font-bold leading-6 text-muted-foreground">{group.note}</p>
               </div>
               <Sparkles className="shrink-0 text-secondary" size={22} aria-hidden="true" />
             </div>
