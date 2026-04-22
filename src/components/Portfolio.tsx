@@ -1,5 +1,6 @@
 import { ArrowUpRight, BriefcaseBusiness, CheckCircle2, GraduationCap, HeartHandshake, Leaf, Linkedin, Mail, MapPin, Menu, Phone, Send, Sparkles, Sprout, X } from "lucide-react";
 import { type ReactNode, useEffect, useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
 import headshot from "@/assets/portfolio/tamim-headshot-photo.jpg";
@@ -32,13 +33,13 @@ import publicationTwo from "@/assets/portfolio/Publication-Secretary2.jpg";
 const contactEndpoint = "https://formspree.io/f/mzdyjwkn";
 
 const navItems = [
-  { href: "#home", label: "Home" },
-  { href: "#about", label: "About" },
-  { href: "#education", label: "Education" },
-  { href: "#skills", label: "Skills" },
-  { href: "#experience", label: "Experience" },
-  { href: "#reflection", label: "Reflection" },
-  { href: "#contact", label: "Contact" },
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About" },
+  { href: "/education", label: "Education" },
+  { href: "/skills", label: "Skills" },
+  { href: "/experience", label: "Experience" },
+  { href: "/reflection", label: "Reflection" },
+  { href: "/contact", label: "Contact" },
 ];
 
 const skills = [
