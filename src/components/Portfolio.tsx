@@ -579,31 +579,158 @@ const Experience = () => (
   </section>
 );
 
-const Contact = () => (
-  <section id="contact" className="relative overflow-hidden bg-secondary px-4 py-24 text-secondary-foreground sm:px-6 lg:px-8">
-    <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-      <div>
-        <p className="mb-3 font-body text-sm font-extrabold uppercase tracking-[0.18em] text-secondary-foreground/75">Contact</p>
-        <h2 className="font-display text-4xl font-bold leading-tight md:text-5xl">Let’s connect about internships, sales, and business growth</h2>
-        <div className="mt-8 grid gap-4">
-          <a href="mailto:Imtiaztamim521@gmail.com" className="flex items-center gap-4 rounded-full bg-secondary-foreground/12 p-4 font-bold transition-colors hover:bg-secondary-foreground/18"><Mail size={22} /> Imtiaztamim521@gmail.com</a>
-          <a href="tel:+447424630174" className="flex items-center gap-4 rounded-full bg-secondary-foreground/12 p-4 font-bold transition-colors hover:bg-secondary-foreground/18"><Phone size={22} /> +44 7424 630174</a>
-          <a href="https://www.linkedin.com/in/tamim-mia-08a719349" target="_blank" rel="noreferrer" className="flex items-center gap-4 rounded-full bg-secondary-foreground/12 p-4 font-bold transition-colors hover:bg-secondary-foreground/18"><Linkedin size={22} /> LinkedIn Profile</a>
-          <a href="/Tamim-Mia-CV.pdf" download className="flex items-center gap-4 rounded-full bg-secondary-foreground/12 p-4 font-bold transition-colors hover:bg-secondary-foreground/18"><Download size={22} /> Download CV</a>
-          <p className="flex items-center gap-4 rounded-full bg-secondary-foreground/12 p-4 font-bold"><MapPin size={22} /> 19 W Arbour Street, E1 0PQ, London, GB</p>
+const Contact = () => {
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus("submitting");
+
+    const formData = new FormData(e.currentTarget);
+
+    try {
+      const response = await fetch(contactEndpoint, {
+        method: "POST",
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        setStatus("success");
+        (e.target as HTMLFormElement).reset();
+      } else {
+        const data = await response.json();
+        if (data.errors) {
+          setErrorMessage(data.errors.map((error: any) => error.message).join(", "));
+        } else {
+          setErrorMessage("Oops! There was a problem submitting your form.");
+        }
+        setStatus("error");
+      }
+    } catch (error) {
+      setErrorMessage("Oops! Connection error. Please try again later.");
+      setStatus("error");
+    }
+  };
+
+  return (
+    <section id="contact" className="relative overflow-hidden bg-secondary px-4 py-24 text-secondary-foreground sm:px-6 lg:px-8">
+      <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+        <div className="animate-in fade-in slide-in-from-left-4 duration-700">
+          <p className="mb-3 font-body text-sm font-extrabold uppercase tracking-[0.18em] text-secondary-foreground/75">Contact</p>
+          <h2 className="font-display text-4xl font-bold leading-tight md:text-5xl">Let’s connect about internships, sales, and business growth</h2>
+          <div className="mt-8 grid gap-4">
+            <a href="mailto:Imtiaztamim521@gmail.com" className="flex items-center gap-4 rounded-full bg-secondary-foreground/12 p-4 font-bold transition-colors hover:bg-secondary-foreground/18">
+              <Mail size={22} /> Imtiaztamim521@gmail.com
+            </a>
+            <a href="tel:+447424630174" className="flex items-center gap-4 rounded-full bg-secondary-foreground/12 p-4 font-bold transition-colors hover:bg-secondary-foreground/18">
+              <Phone size={22} /> +44 7424 630174
+            </a>
+            <a href="https://www.linkedin.com/in/tamim-mia-08a719349" target="_blank" rel="noreferrer" className="flex items-center gap-4 rounded-full bg-secondary-foreground/12 p-4 font-bold transition-colors hover:bg-secondary-foreground/18">
+              <Linkedin size={22} /> LinkedIn Profile
+            </a>
+            <a href="/Tamim-Mia-CV.pdf" download className="flex items-center gap-4 rounded-full bg-secondary-foreground/12 p-4 font-bold transition-colors hover:bg-secondary-foreground/18">
+              <Download size={22} /> Download CV
+            </a>
+            <p className="flex items-center gap-4 rounded-full bg-secondary-foreground/12 p-4 font-bold">
+              <MapPin size={22} /> 19 W Arbour Street, E1 0PQ, London, GB
+            </p>
+          </div>
+        </div>
+
+        <div className="relative">
+          {status === "success" ? (
+            <div className="flex h-full min-h-[400px] flex-col items-center justify-center rounded-[4rem_2rem_3rem_2rem] border border-primary/20 bg-primary/10 p-12 text-center shadow-float backdrop-blur animate-in zoom-in-95 duration-500">
+              <div className="mb-6 grid h-20 w-20 place-items-center rounded-full bg-primary text-primary-foreground shadow-soft transition-transform hover:scale-110">
+                <CheckCircle2 size={40} />
+              </div>
+              <h3 className="font-display text-3xl font-bold">Message Sent!</h3>
+              <p className="mt-4 text-lg font-medium opacity-80">
+                Thank you for reaching out, Tamim. I'll get back to you as soon as possible.
+              </p>
+              <Button
+                onClick={() => setStatus("idle")}
+                variant="organicLight"
+                size="lg"
+                className="mt-8"
+              >
+                Send another message
+              </Button>
+            </div>
+          ) : (
+            <form
+              onSubmit={handleSubmit}
+              className="rounded-[4rem_2rem_3rem_2rem] border border-secondary-foreground/25 bg-secondary-foreground/12 p-6 shadow-float backdrop-blur md:p-8 animate-in fade-in slide-in-from-right-4 duration-700"
+            >
+              <div className="grid gap-5">
+                <label className="grid gap-2 font-bold">
+                  Name
+                  <input
+                    required
+                    name="name"
+                    disabled={status === "submitting"}
+                    minLength={2}
+                    maxLength={100}
+                    className="h-12 rounded-full border border-secondary-foreground/25 bg-surface/90 px-5 text-foreground outline-none ring-offset-secondary transition-all focus-visible:ring-2 focus-visible:ring-secondary-foreground/70 disabled:opacity-50"
+                  />
+                </label>
+                <label className="grid gap-2 font-bold">
+                  Email
+                  <input
+                    required
+                    name="email"
+                    type="email"
+                    disabled={status === "submitting"}
+                    maxLength={255}
+                    className="h-12 rounded-full border border-secondary-foreground/25 bg-surface/90 px-5 text-foreground outline-none ring-offset-secondary transition-all focus-visible:ring-2 focus-visible:ring-secondary-foreground/70 disabled:opacity-50"
+                  />
+                </label>
+                <label className="grid gap-2 font-bold">
+                  Message
+                  <textarea
+                    required
+                    name="message"
+                    disabled={status === "submitting"}
+                    minLength={10}
+                    maxLength={1000}
+                    rows={5}
+                    className="rounded-[1.75rem] border border-secondary-foreground/25 bg-surface/90 px-5 py-4 text-foreground outline-none ring-offset-secondary transition-all focus-visible:ring-2 focus-visible:ring-secondary-foreground/70 disabled:opacity-50"
+                  />
+                </label>
+
+                {status === "error" && (
+                  <p className="rounded-2xl bg-destructive/10 p-4 text-sm font-bold text-destructive animate-in shake-1">
+                    {errorMessage}
+                  </p>
+                )}
+
+                <Button
+                  type="submit"
+                  disabled={status === "submitting"}
+                  variant="organicLight"
+                  size="xl"
+                  className="w-full sm:w-auto overflow-hidden relative"
+                >
+                  <span className={cn("inline-flex items-center gap-2 transition-transform duration-300", status === "submitting" ? "-translate-y-12" : "translate-y-0")}>
+                    Send message <Send size={18} aria-hidden="true" />
+                  </span>
+                  {status === "submitting" && (
+                    <span className="absolute inset-x-0 bottom-0 top-0 flex items-center justify-center gap-2 font-bold animate-in slide-in-from-bottom-8 duration-300">
+                      Sending... <Sparkles size={18} className="animate-pulse" />
+                    </span>
+                  )}
+                </Button>
+              </div>
+            </form>
+          )}
         </div>
       </div>
-      <form action={contactEndpoint} method="POST" className="rounded-[4rem_2rem_3rem_2rem] border border-secondary-foreground/25 bg-secondary-foreground/12 p-6 shadow-float backdrop-blur md:p-8">
-        <div className="grid gap-5">
-          <label className="grid gap-2 font-bold">Name<input required name="name" minLength={2} maxLength={100} className="h-12 rounded-full border border-secondary-foreground/25 bg-surface/90 px-5 text-foreground outline-none ring-offset-secondary transition-shadow focus-visible:ring-2 focus-visible:ring-secondary-foreground/70" /></label>
-          <label className="grid gap-2 font-bold">Email<input required name="email" type="email" maxLength={255} className="h-12 rounded-full border border-secondary-foreground/25 bg-surface/90 px-5 text-foreground outline-none ring-offset-secondary transition-shadow focus-visible:ring-2 focus-visible:ring-secondary-foreground/70" /></label>
-          <label className="grid gap-2 font-bold">Message<textarea required name="message" minLength={10} maxLength={1000} rows={5} className="rounded-[1.75rem] border border-secondary-foreground/25 bg-surface/90 px-5 py-4 text-foreground outline-none ring-offset-secondary transition-shadow focus-visible:ring-2 focus-visible:ring-secondary-foreground/70" /></label>
-          <Button type="submit" variant="organicLight" size="xl" className="w-full sm:w-auto">Send message <Send size={18} aria-hidden="true" /></Button>
-        </div>
-      </form>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 const pageSections = {
   home: <Hero />,
