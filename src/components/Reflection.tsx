@@ -36,7 +36,7 @@ const Reflection = () => {
   return (
     <>
       <Seo
-        title="Employability Reflection | Md Shihab"
+        title="Employability Reflection"
         description="Reflections on employability skills development, teamwork, and professional events at Ravensbourne University London by Md Shihab."
         canonical="/reflection"
       />

@@ -762,11 +762,11 @@ const Portfolio = ({ children }: { children: ReactNode }) => {
       jobTitle: "Business Management Student & Sales Professional",
       email: "mailto:Imtiaztamim521@gmail.com",
       telephone: "+44 7424 630174",
-      address: { 
-        "@type": "PostalAddress", 
-        "addressLocality": "London", 
+      address: {
+        "@type": "PostalAddress",
+        "addressLocality": "London",
         "postalCode": "E1 0PQ",
-        "addressCountry": "GB" 
+        "addressCountry": "GB"
       },
       alumniOf: {
         "@type": "CollegeOrUniversity",
