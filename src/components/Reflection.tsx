@@ -37,7 +37,7 @@ const Reflection = () => {
     <>
       <Seo
         title="Employability Reflection"
-        description="Reflections on employability skills development, teamwork, and professional events at Ravensbourne University London by Md Shihab."
+        description="Reflections on employability skills development, teamwork, and professional events at Ravensbourne University London by Tamim Mia."
         canonical="/reflection"
       />
       <main className="pt-24 pb-20 overflow-hidden">
@@ -61,7 +61,7 @@ const Reflection = () => {
               </p>
             </div>
             <div className="lg:col-span-7 rounded-3xl overflow-hidden shadow-2xl relative group h-[400px] md:h-[500px]">
-              <img src="https://i.ibb.co.com/yFgqtp4q/tamim-headshot-photo.jpg" alt="Md Shihab" className="w-full h-full object-cover object-top transition-transform duration-1000 group-hover:scale-105" />
+              <img src="https://i.ibb.co.com/yFgqtp4q/tamim-headshot-photo.jpg" alt="Tamim Mia" className="w-full h-full object-cover object-top transition-transform duration-1000 group-hover:scale-105" />
               <div className="absolute inset-0 border border-white/20 rounded-3xl z-10 pointer-events-none"></div>
             </div>
           </div>
