@@ -103,6 +103,47 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    font-family: "Nunito", ui-sans-serif, system-ui, sans-serif;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.04;
+    mix-blend-mode: multiply;
+    background-image: radial-gradient(hsl(var(--foreground) / 0.5) 0.7px, transparent 0.7px);
+    background-size: 6px 6px;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .organic-blob {
+    @apply pointer-events-none absolute blur-3xl animate-drift;
+  }
+
+  .organic-blob-one {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+
+  .organic-blob-two {
+    border-radius: 35% 65% 58% 42% / 55% 35% 65% 45%;
+  }
+
+  .organic-blob-three {
+    border-radius: 70% 30% 45% 55% / 35% 60% 40% 65%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .organic-blob {
+      animation: none;
+    }
   }
 }

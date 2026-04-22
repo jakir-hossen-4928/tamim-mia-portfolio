@@ -205,7 +205,7 @@ const About = () => (
       </div>
       <div className="grid gap-5 sm:grid-cols-2">
         {stats.map((stat, index) => (
-          <div key={stat.label} className={`group rounded-organic-${(index % 4) + 1} border border-border/60 bg-surface p-7 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-float`}>
+          <div key={stat.label} className={`group ${organicRadii[index % organicRadii.length]} border border-border/60 bg-surface p-7 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-float`}>
             <p className="font-display text-5xl font-black text-primary transition-transform duration-300 group-hover:scale-110">{stat.value}</p>
             <p className="mt-2 font-bold leading-7 text-accent-foreground">{stat.label}</p>
           </div>
@@ -247,7 +247,7 @@ const Skills = () => (
     </SectionHeading>
     <div className="mx-auto grid max-w-7xl gap-4 sm:grid-cols-2 lg:grid-cols-4">
       {skills.map((skill, index) => (
-        <div key={skill} className={`group flex min-h-28 items-center gap-4 rounded-organic-${(index % 4) + 1} border border-border/60 bg-surface p-5 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-float`}>
+        <div key={skill} className={`group flex min-h-28 items-center gap-4 ${organicRadii[index % organicRadii.length]} border border-border/60 bg-surface p-5 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-float`}>
           <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-primary/10 text-primary transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground">
             <CheckCircle2 size={24} aria-hidden="true" />
           </span>
@@ -296,7 +296,7 @@ const Reflection = () => (
     </SectionHeading>
     <div className="mx-auto grid max-w-7xl auto-rows-[minmax(18rem,auto)] gap-6 md:grid-cols-6">
       {reflections.map((group, index) => (
-        <article key={group.title} className={`group relative overflow-hidden rounded-organic-${(index % 4) + 1} border border-border/60 bg-surface shadow-soft transition-all duration-500 hover:-translate-y-1 hover:shadow-float ${index === 0 || index === 1 ? "md:col-span-3 md:row-span-2" : index === 2 ? "md:col-span-4" : "md:col-span-2"}`}>
+        <article key={group.title} className={`group relative overflow-hidden ${organicRadii[index % organicRadii.length]} border border-border/60 bg-surface shadow-soft transition-all duration-500 hover:-translate-y-1 hover:shadow-float ${index === 0 || index === 1 ? "md:col-span-3 md:row-span-2" : index === 2 ? "md:col-span-4" : "md:col-span-2"}`}>
           <div className="grid h-full grid-cols-2 gap-1 p-2">
             {group.images.slice(0, 4).map((image, imageIndex) => (
               <img key={image} src={image} alt={`${group.title} reflection image ${imageIndex + 1}`} className={`h-full min-h-36 w-full object-cover transition-transform duration-700 group-hover:scale-105 ${imageIndex === 0 && group.images.length < 3 ? "col-span-2" : ""} rounded-[1.4rem]`} loading="lazy" />
