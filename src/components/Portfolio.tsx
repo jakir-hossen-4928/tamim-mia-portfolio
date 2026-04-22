@@ -1,4 +1,4 @@
-import { ArrowUpRight, BriefcaseBusiness, CheckCircle2, Download, GraduationCap, Laptop, Languages, Leaf, Linkedin, Mail, MapPin, Menu, Phone, Send, Sparkles, Sprout, Terminal, X } from "lucide-react";
+import { ArrowUpRight, BriefcaseBusiness, CheckCircle2, Download, GraduationCap, Laptop, Languages, Leaf, Linkedin, Mail, MapPin, Menu, MessageCircle, Send, Sparkles, Sprout, Terminal, X } from "lucide-react";
 import { type ReactNode, useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { Button, buttonVariants } from "@/components/ui/button";
@@ -6,6 +6,7 @@ import { Progress } from "@/components/ui/progress";
 import { cn } from "@/lib/utils";
 
 import Reflection from "./Reflection";
+import Projects from "./projects";
 
 const headshot = "https://i.ibb.co.com/yFgqtp4q/tamim-headshot-photo.jpg";
 const contentCertificate = "https://i.ibb.co.com/5xFRPM2j/Linked-In-Learning-Certificate-Content-Marketing-Customer-Engagement.png";
@@ -20,6 +21,7 @@ const navItems = [
   { href: "/skills", label: "Skills" },
   { href: "/experience", label: "Experience" },
   { href: "/reflection", label: "Reflection" },
+  { href: "/projects", label: "Projects" },
 ];
 
 const professionalSkills = [
@@ -151,7 +153,7 @@ const Hero = () => (
           </Button>
         </div>
         <div className="mt-8 grid max-w-2xl grid-cols-1 gap-3 text-sm font-bold text-accent-foreground sm:grid-cols-3">
-          <a className="inline-flex items-center gap-2 rounded-full bg-accent/70 px-4 py-3" href="tel:+447424630174"><Phone size={16} /> +44 7424 630174</a>
+          <a className="inline-flex items-center gap-2 rounded-full bg-accent/70 px-4 py-3" href="https://wa.me/447424630174" target="_blank" rel="noreferrer"><MessageCircle size={16} /> WhatsApp</a>
           <a className="inline-flex items-center gap-2 rounded-full bg-accent/70 px-4 py-3 sm:col-span-2" href="mailto:Imtiaztamim521@gmail.com"><Mail size={16} /> Imtiaztamim521@gmail.com</a>
         </div>
       </div>
@@ -626,8 +628,8 @@ const Contact = () => {
             <a href="mailto:Imtiaztamim521@gmail.com" className="flex items-center gap-4 rounded-full bg-secondary-foreground/12 p-4 font-bold transition-colors hover:bg-secondary-foreground/18">
               <Mail size={22} /> Imtiaztamim521@gmail.com
             </a>
-            <a href="tel:+447424630174" className="flex items-center gap-4 rounded-full bg-secondary-foreground/12 p-4 font-bold transition-colors hover:bg-secondary-foreground/18">
-              <Phone size={22} /> +44 7424 630174
+            <a href="https://wa.me/447424630174" target="_blank" rel="noreferrer" className="flex items-center gap-4 rounded-full bg-secondary-foreground/12 p-4 font-bold transition-colors hover:bg-secondary-foreground/18">
+              <MessageCircle size={22} /> WhatsApp
             </a>
             <a href="https://www.linkedin.com/in/tamim-mia-08a719349" target="_blank" rel="noreferrer" className="flex items-center gap-4 rounded-full bg-secondary-foreground/12 p-4 font-bold transition-colors hover:bg-secondary-foreground/18">
               <Linkedin size={22} /> LinkedIn Profile
@@ -739,6 +741,7 @@ const pageSections = {
   skills: <Skills />,
   experience: <Experience />,
   reflection: <Reflection />,
+  projects: <Projects />,
   contact: <Contact />,
 };
 
@@ -748,6 +751,7 @@ export const EducationPage = () => pageSections.education;
 export const SkillsPage = () => pageSections.skills;
 export const ExperiencePage = () => pageSections.experience;
 export const ReflectionPage = () => pageSections.reflection;
+export const ProjectsPage = () => pageSections.projects;
 export const ContactPage = () => pageSections.contact;
 
 const Portfolio = ({ children }: { children: ReactNode }) => {
@@ -797,6 +801,8 @@ const Portfolio = ({ children }: { children: ReactNode }) => {
         return "bg-background";
       case "/contact":
         return "bg-secondary";
+      case "/projects":
+        return "bg-background";
       default:
         return "bg-background";
     }
@@ -815,7 +821,7 @@ const Portfolio = ({ children }: { children: ReactNode }) => {
   };
 
   return (
-    <main className="min-h-screen overflow-hidden bg-background font-body text-foreground">
+    <main className="min-h-screen overflow-x-hidden bg-background font-body text-foreground">
       <Navigation />
       {children}
       <footer className={`px-4 py-10 text-center text-sm font-bold transition-colors duration-500 ${getFooterBgColor()} ${getFooterTextColor()}`}>
