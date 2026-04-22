@@ -343,6 +343,24 @@ const Contact = () => (
   </section>
 );
 
+const pageSections = {
+  home: <Hero />,
+  about: <About />,
+  education: <Education />,
+  skills: <Skills />,
+  experience: <Experience />,
+  reflection: <Reflection />,
+  contact: <Contact />,
+};
+
+export const HomePage = () => pageSections.home;
+export const AboutPage = () => pageSections.about;
+export const EducationPage = () => pageSections.education;
+export const SkillsPage = () => pageSections.skills;
+export const ExperiencePage = () => pageSections.experience;
+export const ReflectionPage = () => pageSections.reflection;
+export const ContactPage = () => pageSections.contact;
+
 const Portfolio = () => {
   useEffect(() => {
     const structuredData = {
@@ -366,13 +384,7 @@ const Portfolio = () => {
   return (
     <main className="min-h-screen overflow-hidden bg-background font-body text-foreground">
       <Navigation />
-      <Hero />
-      <About />
-      <Education />
-      <Skills />
-      <Experience />
-      <Reflection />
-      <Contact />
+      {children}
       <footer className="px-4 py-10 text-center text-sm font-bold text-muted-foreground">
         <p>© {new Date().getFullYear()} Tamim Mia · Business Management Portfolio</p>
       </footer>
