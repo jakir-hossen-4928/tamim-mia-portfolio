@@ -1,5 +1,5 @@
-import { ArrowUpRight, Award, BriefcaseBusiness, CalendarDays, CheckCircle2, GraduationCap, HeartHandshake, Leaf, Linkedin, Mail, MapPin, Menu, Phone, Send, Sparkles, Sprout, Users, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { ArrowUpRight, BriefcaseBusiness, CheckCircle2, GraduationCap, HeartHandshake, Leaf, Linkedin, Mail, MapPin, Menu, Phone, Send, Sparkles, Sprout, X } from "lucide-react";
+import { type ReactNode, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 
 import headshot from "@/assets/portfolio/tamim-headshot-photo.jpg";
@@ -63,6 +63,8 @@ const stats = [
   { value: "7", label: "reflection galleries" },
 ];
 
+const organicRadii = ["rounded-organic-1", "rounded-organic-2", "rounded-organic-3", "rounded-organic-4"];
+
 const reflections = [
   {
     title: "Class activities",
@@ -105,7 +107,7 @@ const OrganicBlob = ({ className, variant = "one" }: { className: string; varian
   <div aria-hidden="true" className={`organic-blob organic-blob-${variant} ${className}`} />
 );
 
-const SectionHeading = ({ eyebrow, title, children }: { eyebrow: string; title: string; children?: React.ReactNode }) => (
+const SectionHeading = ({ eyebrow, title, children }: { eyebrow: string; title: string; children?: ReactNode }) => (
   <div className="mx-auto mb-14 max-w-3xl text-center">
     <p className="mb-3 font-body text-sm font-extrabold uppercase tracking-[0.18em] text-secondary">{eyebrow}</p>
     <h2 className="font-display text-4xl font-bold leading-tight text-foreground md:text-5xl">{title}</h2>
